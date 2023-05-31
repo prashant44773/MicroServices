@@ -1,0 +1,15 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.myStyle{
+  background-color: rgb(130, 165, 229);
+  /* color: white; */
+}
+
+.btnStyle{
+  background-color: rgb(240, 64, 87);
+  color: rgb(42, 39, 39);
+}
+.btnStyle:hover{
+  border-color: white;
+  color: white;
+}
