@@ -1,0 +1,37 @@
+<!-- <p>bookadmin works!</p> -->
+
+<h2>Add Your Product From Here</h2>
+
+<div class="container">
+
+  <form [formGroup]="bookProduct">
+    <!-- Email input -->
+    <div class="form-outline mb-4 mt-3">
+      <label class="form-label" for="form2Example1">Product Title</label>
+      <input type="text" id="form2Example1" class="form-control" formControlName="title"/>
+    </div>
+
+    <!-- File Input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="customFile">Product Image</label>
+      <input type="file" class="form-control" id="customFile" (change)="UploadFile($event)"/>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Product Description</label>
+      <textarea type="text" id="form2Example2" class="form-control" rows="4" placeholder="What Makes Your Product StandOut..." formControlName="desc" ></textarea>
+    </div>
+
+    <!-- Price input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="typeNumber">Product Price</label>
+      <input type="number" id="typeNumber" class="form-control" placeholder="INR (Rs.)" formControlName="price" />
+    </div>
+
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="Submit()">Add Product</button>
+
+</form>
+
+</div>

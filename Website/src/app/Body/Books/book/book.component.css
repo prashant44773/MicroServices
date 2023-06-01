@@ -1,0 +1,9 @@
+.container{
+  height: auto;
+  justify-content: space-around;
+}
+
+.imgStyle{
+  width: 24%;
+  height: 8%;
+}
