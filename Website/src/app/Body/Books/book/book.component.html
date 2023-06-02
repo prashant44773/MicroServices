@@ -2,10 +2,10 @@
 <div class="container d-flex flex-wrap">
 
   <!-- Element -->
-  <div class="card imgStyle mt-2 mb-2">
+  <!-- <div class="card imgStyle mt-2 mb-2">
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
       <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid"/>
-      <!-- <img src="assets/Images/login.png" class="img-fluid"/> -->
+      <img src="assets/Images/Books/ProductImg4.png" class="img-fluid"/>
       <a routerLink="#!">
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
@@ -13,7 +13,33 @@
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a routerLink="#!" class="btn btn-primary">Button</a>
+      <div class="container d-flex justify-content-between">
+        <a routerLink="#!" class="btn btn-danger">Order Now</a>
+        <a routerLink="#!" class="btn btn-success">Add To Cart</a>
+      </div>
+    </div>
+  </div> -->
+  <!-- Element -->
+
+  <!-- <img src="assets/Images/Books/ProductImg4.png" class="img-fluid"/> -->
+  <!-- https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp -->
+
+  <!-- Element -->
+  <div class="card imgStyle mt-2 mb-2" *ngFor="let item of BookList">
+    <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+      <img src="assets/Images/Books/{{item.image}}" class="img-fluid"/>
+      <a routerLink="#!">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{item.title}}</h5>
+      <p class="card-text">{{item.description}}</p>
+      <h4 class="card-text text-center">{{item.price}} &#8377; </h4>
+      <div class="container d-flex justify-content-between">
+        <a  class="btn btn-danger">Order Now</a>
+        <a  class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
+      </div>
     </div>
   </div>
   <!-- Element -->
