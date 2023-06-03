@@ -17,6 +17,8 @@ import { CartComponent } from './Body/Cart/cart/cart.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from '@angular/material/button';
 import { CartbodyComponent } from './Body/Cart/cartbody/cartbody.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { CartbodyComponent } from './Body/Cart/cartbody/cartbody.component';
     HttpClientModule,
     MatDialogModule,
     MatButtonModule,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

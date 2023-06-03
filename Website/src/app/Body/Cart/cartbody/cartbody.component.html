@@ -2,7 +2,10 @@
   <h2 mat-dialog-title>Add To Cart</h2>
 
   <mat-dialog-content class="mat-typography">
-
+    <kendo-grid [data]="userTestStatus">
+      <kendo-grid-column field="id" title="ID"> </kendo-grid-column>
+      <kendo-grid-column field="name" title="Name"> </kendo-grid-column>
+    </kendo-grid>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
