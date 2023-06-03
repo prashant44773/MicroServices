@@ -1,14 +1,35 @@
 
-  <h2 mat-dialog-title>Add To Cart</h2>
+<br>
+  <h2 mat-dialog-title class="text-center">Add To Cart</h2>
+<br>
 
   <mat-dialog-content class="mat-typography">
     <kendo-grid [data]="userTestStatus">
-      <kendo-grid-column field="id" title="ID"> </kendo-grid-column>
+      <!-- <kendo-grid-column field="id" title="ID"> </kendo-grid-column> -->
       <kendo-grid-column field="name" title="Name"> </kendo-grid-column>
+
+      <kendo-grid-column title="Image">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <img src="{{'assets/Images/Books/' + dataItem.pro}}" alt="Img"
+          height="100px" width="100px">
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="name" title="Name"> </kendo-grid-column>
+      <kendo-grid-column field="name" title="Price"> </kendo-grid-column>
+      <kendo-grid-column field="name" title="Qty"> </kendo-grid-column>
+
+      <kendo-grid-command-column title="command">
+        <ng-template kendoGridCellTemplate>
+          <button kendoGridEditCommand [primary]="true">Edit</button>
+          <button kendoGridRemoveCommand >Remove</button>
+            <!-- more command buttons here -->
+        </ng-template>
+    </kendo-grid-command-column>
+
     </kendo-grid>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
-
