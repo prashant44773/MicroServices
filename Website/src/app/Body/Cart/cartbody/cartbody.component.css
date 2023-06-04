@@ -1,1 +1,21 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.btnStyle {
+  background-color: rgb(235, 70, 70);
+  color: white;
+}
+
+.btnStyleCan {
+  background-color: rgb(161, 70, 235);
+  color: white;
+}
+
+.btnStyleEdit {
+  background-color: rgb(70, 142, 235);
+  color: white;
+}
+
+.btnStyleSave {
+  background-color: rgb(55, 234, 90);
+  color: white;
+}

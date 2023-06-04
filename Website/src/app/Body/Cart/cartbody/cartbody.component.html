@@ -1,28 +1,34 @@
 
 <br>
-  <h2 mat-dialog-title class="text-center">Add To Cart</h2>
+  <h1 mat-dialog-title class="text-center">Add To Cart</h1>
 <br>
 
   <mat-dialog-content class="mat-typography">
-    <kendo-grid [data]="userTestStatus">
+    <kendo-grid [data]="userTestStatus"
+    (edit)="editHandler($event)"
+    (cancel)="cancelHandler($event)"
+    (save)="saveHandler($event)"
+    (remove)="removeHandler($event)"
+    >
       <!-- <kendo-grid-column field="id" title="ID"> </kendo-grid-column> -->
-      <kendo-grid-column field="name" title="Name"> </kendo-grid-column>
+      <kendo-grid-column field="name" title="Name" [editable]="false"> </kendo-grid-column>
 
-      <kendo-grid-column title="Image">
+      <kendo-grid-column title="Image" [editable]="false">
         <ng-template kendoGridCellTemplate let-dataItem>
           <img src="{{'assets/Images/Books/' + dataItem.pro}}" alt="Img"
           height="100px" width="100px">
         </ng-template>
       </kendo-grid-column>
 
-      <kendo-grid-column field="name" title="Name"> </kendo-grid-column>
-      <kendo-grid-column field="name" title="Price"> </kendo-grid-column>
-      <kendo-grid-column field="name" title="Qty"> </kendo-grid-column>
+      <kendo-grid-column field="price" title="Price" [editable]="false"> </kendo-grid-column>
+      <kendo-grid-column field="Qty" title="Qty" editor="numeric"> </kendo-grid-column>
 
-      <kendo-grid-command-column title="command">
+      <kendo-grid-command-column title="Actions">
         <ng-template kendoGridCellTemplate>
-          <button kendoGridEditCommand [primary]="true">Edit</button>
-          <button kendoGridRemoveCommand >Remove</button>
+          <button class="btnStyleEdit" kendoGridEditCommand >Edit</button>
+          <button class="btnStyle" kendoGridRemoveCommand >Remove</button>
+          <button class="btnStyleCan" kendoGridCancelCommand >Cancel</button>
+          <button class="btnStyleSave" kendoGridSaveCommand >Save</button>
             <!-- more command buttons here -->
         </ng-template>
     </kendo-grid-command-column>
@@ -31,5 +37,5 @@
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close color="primary">Cancel</button>
   </mat-dialog-actions>

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-// import { MatButton } from '@angular/material/button';
-// import {MatDialogConfig} from "@angular/material/dialog";
 import { CartbodyComponent } from '../cartbody/cartbody.component';
 
 
@@ -14,6 +12,8 @@ export class CartComponent {
 
   constructor(public dialog: MatDialog) {
   }
+
+  CartCount = 25;
 
   openDialog() {
     const dialogRef = this.dialog.open(CartbodyComponent,{

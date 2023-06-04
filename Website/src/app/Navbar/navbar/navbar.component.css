@@ -1,15 +1,27 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-.myStyle{
+.myStyle {
   background-color: rgb(130, 165, 229);
   /* color: white; */
 }
 
-.btnStyle{
+.btnStyle {
   background-color: rgb(240, 64, 87);
   color: rgb(42, 39, 39);
 }
-.btnStyle:hover{
-  border-color: white;
+.btnStyle:hover {
   color: white;
+}
+
+.active {
+  /* color: white; */
+  background: white;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+nav {
+  font-size:1.1rem;
+  font-family: "Kanit", sans-serif;
+  font-family: "Lexend Deca", sans-serif;
 }

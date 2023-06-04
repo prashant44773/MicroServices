@@ -1,1 +1,6 @@
-<button mat-button (click)="openDialog()">Open dialog</button>
+<!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+
+<button mat-raised-button color="accent" (click)="openDialog()"
+    matBadge="{{CartCount}}" matBadgePosition="before" matBadgeColor="warn">
+    <i class="bi bi-bag-check-fill fa-lg"></i> Your Cart
+</button>

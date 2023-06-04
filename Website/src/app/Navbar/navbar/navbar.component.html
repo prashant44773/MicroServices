@@ -26,38 +26,23 @@
       <!-- Left links -->
       <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0"> -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="#"><i class="bi bi-house-door-fill"></i> Home</a>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" aria-current="page" routerLink="#"><i class="bi bi-house-door-fill"></i> Home</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" [routerLinkActive]="['active']">
           <a class="nav-link" routerLink="/book"><i class="bi bi-shop"></i> Books</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#"><i class="bi bi-pc-display-horizontal"></i> Computers</a>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/comp"><i class="bi bi-pc-display-horizontal"></i> Computers</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="#"><i class="bi bi-cart4"></i> Fashion</a>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/fash"><i class="bi bi-cart4"></i> Fashion</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" routerLink="#" tabindex="-1" aria-disabled="true"
-            >Disabled</a
-          >
-        </li> -->
       </ul>
       <!-- Left links -->
 
       <!-- Search form -->
-      <form class="d-flex input-group w-auto">
-        <input
-          type="search"
-          class="form-control"
-          placeholder="Type query"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-primary btnStyle" type="button">
-          Search
-        </button>
-      </form>
+      <app-cart></app-cart>
     </div>
     <!-- Collapsible wrapper -->
   </div>
