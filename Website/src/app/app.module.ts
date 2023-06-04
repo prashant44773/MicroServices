@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { CartbodyComponent } from './Body/Cart/cartbody/cartbody.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import {MatBadgeModule} from '@angular/material/badge';
+import { OrderComponent } from './Common/order/order.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     CompComponent,
     FashComponent,
     CartComponent,
-    CartbodyComponent
+    CartbodyComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

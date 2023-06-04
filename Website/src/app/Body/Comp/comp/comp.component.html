@@ -16,7 +16,7 @@
       <h5 class="card-title">Card title</h5>
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <div class="container d-flex justify-content-between">
-        <a routerLink="#!" class="btn btn-danger">Order Now</a>
+        <a routerLink="/order" [state]="Rout" class="btn btn-danger">Order Now</a>
         <a routerLink="#!" class="btn btn-success">Add To Cart</a>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <p class="card-text">{{item.description}}</p>
       <h4 class="card-text text-center">{{item.price}} &#8377; </h4>
       <div class="container d-flex justify-content-between">
-        <a  class="btn btn-danger">Order Now</a>
+        <a  routerLink="/order" [state]="Rout" class="btn btn-danger">Order Now</a>
         <a  class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
       </div>
     </div>

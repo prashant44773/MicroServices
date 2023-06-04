@@ -8,6 +8,12 @@ import { CompServiceService } from './comp-service.service';
 })
 export class CompComponent {
 
+  Rout = {
+    id:1,
+    name:"LoneWolf",
+    email:"LoneWolf@gmail.com"
+  };
+
   ReqID = 100; // For Add To Cart
 
   constructor(private service : CompServiceService){

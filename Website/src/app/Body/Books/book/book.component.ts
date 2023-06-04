@@ -8,6 +8,12 @@ import {BookService} from './book.service';
 })
 export class BookComponent {
 
+  Rout = {
+    id:1,
+    name:"LoneWolf",
+    email:"LoneWolf@gmail.com"
+  };
+
   ReqID = 100; // For Add To Cart
 
     constructor(private service : BookService){

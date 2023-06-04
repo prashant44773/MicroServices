@@ -8,6 +8,12 @@ import { FashService } from './fash.service';
 })
 export class FashComponent {
 
+  Rout = {
+    id:1,
+    name:"LoneWolf",
+    email:"LoneWolf@gmail.com"
+  };
+
   ReqID = 100; // For Add To Cart
 
   constructor(private service : FashService){
