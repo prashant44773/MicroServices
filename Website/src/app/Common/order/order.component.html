@@ -6,21 +6,15 @@
     <div class="row g-0">
       <div class="col-md-4 addimg">
         <img
-          src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+        src="assets/Images/Books/{{Ordered.image}}" width="100%"
           alt="Trendy Pants and Shoes"
           class="img-fluid rounded-start"
         />
       </div>
       <div class="col-md-8 cardWid">
         <div class="card-body cardBody">
-          <h1 class="card-title">Card title</h1>
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in to
-            additional content. This content is a little bit longer.
-          </p>
-          <p class="card-text">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </p>
+          <h1 class="card-title">{{Ordered.title}}</h1>
+          <p class="card-text">{{Ordered.description}}</p>
           <div class="container d-flex justify-content-between">
             <a routerLink="#!" class="btn btn-danger">Cash On Delivery</a>
             <a routerLink="#!" class="btn btn-success">Pay Online</a>

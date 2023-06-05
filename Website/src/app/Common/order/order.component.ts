@@ -11,11 +11,16 @@ export class OrderComponent implements OnInit{
 
     constructor(public routeData : ActivatedRoute) { }
 
+    Ordered:any;
+
     ngOnInit(): void {
         alert("Getting Routed Object");
         this.routeData.paramMap.pipe(
           map(()=> window.history.state)).subscribe(res=>{
-            console.log(res);
+
+            this.Ordered = res;
+            console.log("Routed Object");
+            console.log(this.Ordered);
         });
     }
 }

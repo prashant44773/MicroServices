@@ -11,13 +11,13 @@ export class BookService {
 
   getApi = "https://localhost:44392/api/Books/Get";
 
-  cart = "https://localhost:44317/api/Cart/Post";
+  cart = "https://localhost:44317/api/Cart/BookCart";
 
   GetBookList(){
     return this.api.get(this.getApi);
   }
 
-  AddToCart(Body:Cart){
+  UploadToCart(Body:Cart){
     return this.api.post(this.cart,Body);
   }
 }

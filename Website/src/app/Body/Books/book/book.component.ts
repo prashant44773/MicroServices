@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {BookService} from './book.service';
+import { Cart } from 'src/app/Common/CartModel';
 
 @Component({
   selector: 'app-book',
@@ -7,12 +8,6 @@ import {BookService} from './book.service';
   styleUrls: ['./book.component.css']
 })
 export class BookComponent {
-
-  Rout = {
-    id:1,
-    name:"LoneWolf",
-    email:"LoneWolf@gmail.com"
-  };
 
   ReqID = 100; // For Add To Cart
 
@@ -28,6 +23,19 @@ export class BookComponent {
 
     AddToCart(item){
       alert("Adding To Cart");
-      console.log(item);
+      // console.log(item);
+
+      let Body:Cart = {
+        Price : item.price,
+        ProductID : item.id,
+        RequestID : this.ReqID,
+        UserID : 1
+      };
+
+      console.log(Body);
+
+      this.service.UploadToCart(Body).subscribe((res)=>{
+          console.log(res);
+      });
     }
 }

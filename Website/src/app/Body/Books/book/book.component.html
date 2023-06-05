@@ -2,10 +2,9 @@
 <div class="container d-flex flex-wrap">
 
   <!-- Element -->
-  <div class="card imgStyle mt-2 mb-2 border-info">
+  <!-- <div class="card imgStyle mt-2 mb-2 border-info">
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
       <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" alt=""/>
-      <!-- <img src="assets/Images/Books/ProductImg4.png" class="img-fluid"/> -->
       <a routerLink="#!">
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
@@ -18,30 +17,30 @@
         <a routerLink="#!" class="btn btn-success">Add To Cart</a>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- Element -->
 
   <!-- <img src="assets/Images/Books/ProductImg4.png" class="img-fluid"/> -->
   <!-- https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp -->
 
   <!-- Element -->
-  <!-- <div class="card imgStyle mt-2 mb-2 border-info" *ngFor="let item of BookList">
+  <div class="card imgStyle mt-2 mb-2 border-info" *ngFor="let item of BookList">
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img src="assets/Images/Books/{{item.image}}" class="img-fluid"/>
+      <img src="assets/Images/Books/{{item.image}}" class="img-fluid" width="100%"/>
       <a routerLink="#!">
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{item.title}}</h5>
-      <p class="card-text">{{item.description}}</p>
+      <h2 class="card-title text-center">{{item.title}}</h2>
+      <p class="card-text para">{{item.description}}</p>
       <h4 class="card-text text-center">{{item.price}} &#8377; </h4>
       <div class="container d-flex justify-content-between">
-        <a routerLink="/order" [state]="Rout" class="btn btn-danger">Order Now</a>
+        <a routerLink="/order" [state]="item" class="btn btn-danger">Order Now</a>
         <a  class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
       </div>
     </div>
-  </div> -->
+  </div>
   <!-- Element -->
 
 </div>
