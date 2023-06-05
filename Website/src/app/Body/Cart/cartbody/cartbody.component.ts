@@ -7,12 +7,24 @@ import {
   SaveEvent,
 } from '@progress/kendo-angular-grid';
 import { MyCart } from './AddToCart';
+import {CartServiceService} from './cart-service.service';
+
+
 @Component({
   selector: 'app-cartbody',
   templateUrl: './cartbody.component.html',
   styleUrls: ['./cartbody.component.css'],
 })
 export class CartbodyComponent {
+
+  constructor(private api : CartServiceService){
+      this.api.GetCartList().subscribe((res)=>{
+          console.log(res);
+      });
+  }
+
+  CartData;
+
   userTestStatus:MyCart [] = [
     { id: 0, name: 'Available', pro: 'ProductImg1.png', price: 5000, Qty: 34 },
     { id: 1, name: 'Ready', pro: 'ProductImg1.png', price: 15000, Qty: 55 },
