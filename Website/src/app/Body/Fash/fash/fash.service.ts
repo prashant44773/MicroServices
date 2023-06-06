@@ -9,15 +9,15 @@ export class FashService {
 
   constructor(private api : HttpClient) { }
 
-  getApi = "Fash API";
+  getApi = "https://localhost:44339/api/Fash/Get";
 
-  cart = "https://localhost:44317/api/Cart/Post";
+  cart = "https://localhost:44317/api/Cart/FashCart";
 
   GetFashList(){
     return this.api.get(this.getApi);
   }
 
-  AddToCart(Body:Cart){
+  UploadToCart(Body:Cart){
     return this.api.post(this.cart,Body);
   }
 }

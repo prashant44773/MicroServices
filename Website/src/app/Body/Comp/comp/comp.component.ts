@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CompServiceService } from './comp-service.service';
+import { Cart } from 'src/app/Common/CartModel';
 
 @Component({
   selector: 'app-comp',
@@ -8,27 +9,33 @@ import { CompServiceService } from './comp-service.service';
 })
 export class CompComponent {
 
-  Rout = {
-    id:1,
-    name:"LoneWolf",
-    email:"LoneWolf@gmail.com"
-  };
+    ReqID = 200; // For Add To Cart
 
-  ReqID = 100; // For Add To Cart
+    constructor(private service : CompServiceService){
+        service.GetCompList().subscribe((res)=>{
+            console.log(res);
+            this.CompList = res;
+        });
+    }
 
-  constructor(private service : CompServiceService){
-      service.GetCompList().subscribe((res)=>{
+    CompList;
+
+
+    AddToCart(item){
+      alert("Adding To Cart");
+      // console.log(item);
+
+      let Body:Cart = {
+        Price : item.price,
+        ProductID : item.id,
+        RequestID : this.ReqID,
+        UserID : 1
+      };
+
+      console.log(Body);
+
+      this.service.UploadToCart(Body).subscribe((res)=>{
           console.log(res);
-          this.CompList = res;
       });
-  }
-
-  CompList;
-
-
-  AddToCart(item){
-    alert("Adding To Cart");
-    console.log(item);
-  }
-
+    }
 }

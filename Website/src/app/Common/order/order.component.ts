@@ -13,6 +13,8 @@ export class OrderComponent implements OnInit{
 
     Ordered:any;
 
+    TheImagePath;
+
     ngOnInit(): void {
         alert("Getting Routed Object");
         this.routeData.paramMap.pipe(
@@ -21,6 +23,18 @@ export class OrderComponent implements OnInit{
             this.Ordered = res;
             console.log("Routed Object");
             console.log(this.Ordered);
+
+            if(this.Ordered.reqID == 100){
+                  this.TheImagePath = "assets/Images/Books/" + this.Ordered.image;
+            }
+
+            if(this.Ordered.reqID == 200){
+                  this.TheImagePath = "assets/Images/Computers/" + this.Ordered.image;
+            }
+
+            if(this.Ordered.reqID == 300){
+                  this.TheImagePath = "assets/Images/Fashion/" + this.Ordered.image;
+            }
         });
     }
 }

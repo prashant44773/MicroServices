@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient , HttpParams} from '@angular/common/http';
+import { MyCartQuantity } from './AddToCart';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,22 @@ export class CartServiceService {
 
   constructor(private api : HttpClient) { }
 
-  cart = "https://localhost:44317/api/Cart/UserCart";
+  Url = "https://localhost:44317/api/Cart/";
+  cart = this.Url + "UserCart";
+  quan = this.Url + "Quantity";
 
-  GetCartList(){
-    return this.api.get(this.cart);
+
+  GetCartList(ID:number){
+
+    let QueryParams = new HttpParams().append("UserID",ID);
+
+    return this.api.get(this.cart , {params : QueryParams});
+  }
+
+
+  UpdateQuantity(Body:MyCartQuantity)
+  {
+    return this.api.put(this.quan,Body);
   }
 
 }

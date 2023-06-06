@@ -29,8 +29,15 @@
       <input type="number" id="typeNumber" class="form-control" placeholder="INR (Rs.)" formControlName="price" />
     </div>
 
+    <!-- Price input -->
+    <div class="form-outline mb-4 MyStyle">
+      <button mat-raised-button color="accent" (click)="Activate(10)" >Book</button>
+      <button mat-raised-button color="primary" (click)="Activate(20)" >Computer</button>
+      <button mat-raised-button color="warn" (click)="Activate(30)" >Fashion</button>
+    </div>
+
     <!-- Submit button -->
-    <button type="button" class="btn btn-primary btn-block mb-4" (click)="Submit()">Add Product</button>
+    <button type="button" class="btn btn-primary btn-block mb-4" (click)="Submit()" [disabled]="isDisabled" >Add Product</button>
 
 </form>
 

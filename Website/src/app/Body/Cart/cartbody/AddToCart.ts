@@ -1,7 +1,9 @@
-export class MyCart{
-    id: number;
-    name: string;
-    pro: string;
-    price: Number;
-    Qty: Number;
-};
+export class MyCartQuantity {
+  ID: number;
+  Title: string;
+  Image: string;
+  Price: Number;
+  Quantity: Number;
+  UserID:Number;
+  ReqID:Number;
+}

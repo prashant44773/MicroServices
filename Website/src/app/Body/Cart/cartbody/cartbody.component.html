@@ -4,24 +4,32 @@
 <br>
 
   <mat-dialog-content class="mat-typography">
-    <kendo-grid [data]="userTestStatus"
+    <kendo-grid [data]="CartData"
     (edit)="editHandler($event)"
     (cancel)="cancelHandler($event)"
     (save)="saveHandler($event)"
     (remove)="removeHandler($event)"
     >
       <!-- <kendo-grid-column field="id" title="ID"> </kendo-grid-column> -->
-      <kendo-grid-column field="name" title="Name" [editable]="false"> </kendo-grid-column>
+      <kendo-grid-column field="title" title="Title" [editable]="false"> </kendo-grid-column>
 
       <kendo-grid-column title="Image" [editable]="false">
         <ng-template kendoGridCellTemplate let-dataItem>
-          <img src="{{'assets/Images/Books/' + dataItem.pro}}" alt="Img"
+          <!-- Binding Images Under Condition Using *ngif Directive -->
+          <img src="{{'assets/Images/Books/' + dataItem.image}}" alt="Img" *ngIf="dataItem.reqID == 100"
           height="100px" width="100px">
+
+          <img src="{{'assets/Images/Computers/' + dataItem.image}}" alt="Img" *ngIf="dataItem.reqID == 200"
+          height="100px" width="100px">
+
+          <img src="{{'assets/Images/Fashion/' + dataItem.image}}" alt="Img" *ngIf="dataItem.reqID == 300"
+          height="100px" width="100px">
+          <!-- Binding Images Under Condition Using *ngif Directive -->
         </ng-template>
       </kendo-grid-column>
 
       <kendo-grid-column field="price" title="Price" [editable]="false"> </kendo-grid-column>
-      <kendo-grid-column field="Qty" title="Qty" editor="numeric"> </kendo-grid-column>
+      <kendo-grid-column field="quantity" title="Qty" editor="numeric"> </kendo-grid-column>
 
       <kendo-grid-command-column title="Actions">
         <ng-template kendoGridCellTemplate>

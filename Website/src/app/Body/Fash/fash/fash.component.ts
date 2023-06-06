@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FashService } from './fash.service';
+import { Cart } from 'src/app/Common/CartModel';
 
 @Component({
   selector: 'app-fash',
@@ -8,13 +9,7 @@ import { FashService } from './fash.service';
 })
 export class FashComponent {
 
-  Rout = {
-    id:1,
-    name:"LoneWolf",
-    email:"LoneWolf@gmail.com"
-  };
-
-  ReqID = 100; // For Add To Cart
+  ReqID = 300; // For Add To Cart
 
   constructor(private service : FashService){
       service.GetFashList().subscribe((res)=>{
@@ -28,7 +23,20 @@ export class FashComponent {
 
   AddToCart(item){
     alert("Adding To Cart");
-    console.log(item);
+    // console.log(item);
+
+    let Body:Cart = {
+      Price : item.price,
+      ProductID : item.id,
+      RequestID : this.ReqID,
+      UserID : 1
+    };
+
+    console.log(Body);
+
+    this.service.UploadToCart(Body).subscribe((res)=>{
+        console.log(res);
+    });
   }
 
 }

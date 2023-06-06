@@ -6,8 +6,8 @@ import {
   RemoveEvent,
   SaveEvent,
 } from '@progress/kendo-angular-grid';
-import { MyCart } from './AddToCart';
 import {CartServiceService} from './cart-service.service';
+import { MyCartQuantity } from './AddToCart';
 
 
 @Component({
@@ -17,19 +17,17 @@ import {CartServiceService} from './cart-service.service';
 })
 export class CartbodyComponent {
 
+  UserID = 1;
+
   constructor(private api : CartServiceService){
-      this.api.GetCartList().subscribe((res)=>{
-          console.log(res);
+      this.api.GetCartList(this.UserID).subscribe((res)=>{
+        this.CartData = res;
+        console.log(res);
       });
   }
 
   CartData;
 
-  userTestStatus:MyCart [] = [
-    { id: 0, name: 'Available', pro: 'ProductImg1.png', price: 5000, Qty: 34 },
-    { id: 1, name: 'Ready', pro: 'ProductImg1.png', price: 15000, Qty: 55 },
-    { id: 2, name: 'Started', pro: 'ProductImg1.png', price: 8000, Qty: 66 },
-  ];
 
   group:FormGroup; // FormGroup For Editing
 
@@ -37,7 +35,8 @@ export class CartbodyComponent {
     // alert(1);
     this.group = new FormGroup({
       id: new FormControl(args.dataItem.id),
-      Qty: new FormControl(args.dataItem.Qty),
+      quantity: new FormControl(args.dataItem.quantity),
+      reqid: new FormControl(args.dataItem.reqID),
       // other fields
     });
     // console.log(args);
@@ -51,8 +50,24 @@ export class CartbodyComponent {
   public saveHandler(args: SaveEvent): void {
     args.sender.closeRow(args.rowIndex);
 
-    console.log(this.group.get('id')?.value);
-    console.log(this.group.get('Qty')?.value);
+    // console.log(this.group.get('id')?.value);
+    // console.log(this.group.get('quantity')?.value);
+
+    let Quan:MyCartQuantity = {
+      UserID:this.UserID,
+      ID:this.group.get('id')?.value,
+      Quantity:this.group.get('quantity')?.value,
+      Price:0,
+      Title:"T",
+      Image:"I",
+      ReqID:this.group.get('reqid')?.value
+    };
+
+    // console.log(Quan);
+
+    this.api.UpdateQuantity(Quan).subscribe((res)=>{
+        console.log(res);
+    });
   }
 
   public removeHandler(args: RemoveEvent): void {
