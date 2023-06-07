@@ -12,6 +12,16 @@ export class CartServiceService {
   Url = "https://localhost:44317/api/Cart/";
   cart = this.Url + "UserCart";
   quan = this.Url + "Quantity";
+  Remove = this.Url + "Remove";
+  CartCount = this.Url + "UserCartCount";
+
+
+  GetCartCount(ID:number){
+
+    let QueryParams = new HttpParams().append("UserID",ID);
+
+    return this.api.get(this.CartCount , {params : QueryParams});
+  };
 
 
   GetCartList(ID:number){
@@ -25,6 +35,11 @@ export class CartServiceService {
   UpdateQuantity(Body:MyCartQuantity)
   {
     return this.api.put(this.quan,Body);
+  }
+
+  RemoveFromCart(Body:MyCartQuantity)
+  {
+    return this.api.put(this.Remove,Body);
   }
 
 }

@@ -6,9 +6,8 @@ import {
   RemoveEvent,
   SaveEvent,
 } from '@progress/kendo-angular-grid';
-import {CartServiceService} from './cart-service.service';
+import { CartServiceService } from './cart-service.service';
 import { MyCartQuantity } from './AddToCart';
-
 
 @Component({
   selector: 'app-cartbody',
@@ -16,20 +15,23 @@ import { MyCartQuantity } from './AddToCart';
   styleUrls: ['./cartbody.component.css'],
 })
 export class CartbodyComponent {
+  constructor(private api: CartServiceService) {
+    this.LoadCartDataApi();
+  }
+
+  LoadCartDataApi() {
+    // So we Can Reload Cart Data After Updates and Deleteions
+    this.api.GetCartList(this.UserID).subscribe((res) => {
+      this.CartData = res;
+      console.log(res);
+    });
+  }
 
   UserID = 1;
 
-  constructor(private api : CartServiceService){
-      this.api.GetCartList(this.UserID).subscribe((res)=>{
-        this.CartData = res;
-        console.log(res);
-      });
-  }
-
   CartData;
 
-
-  group:FormGroup; // FormGroup For Editing
+  group: FormGroup; // FormGroup For Editing
 
   protected editHandler(args: EditEvent): void {
     // alert(1);
@@ -53,26 +55,44 @@ export class CartbodyComponent {
     // console.log(this.group.get('id')?.value);
     // console.log(this.group.get('quantity')?.value);
 
-    let Quan:MyCartQuantity = {
-      UserID:this.UserID,
-      ID:this.group.get('id')?.value,
-      Quantity:this.group.get('quantity')?.value,
-      Price:0,
-      Title:"T",
-      Image:"I",
-      ReqID:this.group.get('reqid')?.value
+    let Quan: MyCartQuantity = {
+      UserID: this.UserID,
+      ID: this.group.get('id')?.value,
+      Quantity: this.group.get('quantity')?.value,
+      Price: 0,
+      Title: 'T',
+      Image: 'I',
+      ReqID: this.group.get('reqid')?.value,
     };
 
     // console.log(Quan);
 
-    this.api.UpdateQuantity(Quan).subscribe((res)=>{
-        console.log(res);
+    this.api.UpdateQuantity(Quan).subscribe((res) => {
+      console.log(res);
+      this.LoadCartDataApi();
     });
   }
 
   public removeHandler(args: RemoveEvent): void {
-    // this.editService.remove(args.dataItem);
-    alert("Remove");
-    console.log(args.dataItem.id);
+
+    alert('Remove');
+    // console.log(args.dataItem);
+
+    let Remove: MyCartQuantity = {
+      UserID: this.UserID,
+      ID: args.dataItem.id,
+      Quantity: args.dataItem.quantity,
+      Price: args.dataItem.price,
+      Title: args.dataItem.title,
+      Image: args.dataItem.image,
+      ReqID: args.dataItem.reqID,
+    };
+
+    // console.log(Remove);
+
+    this.api.RemoveFromCart(Remove).subscribe((res) => {
+      console.log(res);
+      this.LoadCartDataApi();
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CartbodyComponent } from '../cartbody/cartbody.component';
-
+import {CartServiceService} from '../cartbody/cart-service.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,10 +10,17 @@ import { CartbodyComponent } from '../cartbody/cartbody.component';
 })
 export class CartComponent {
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog , private api : CartServiceService) {
+        this.api.GetCartCount(this.UserID).subscribe((res)=>{
+            // alert(1);
+            // console.log(res);
+            this.CartCount = res;
+        });
   }
 
-  CartCount = 25;
+  UserID = 1;
+
+  CartCount;
 
   openDialog() {
     const dialogRef = this.dialog.open(CartbodyComponent,{
