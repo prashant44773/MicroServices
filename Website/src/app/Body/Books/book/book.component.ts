@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {BookService} from './book.service';
 import { Cart } from 'src/app/Common/CartModel';
+import { CartComponent } from '../../Cart/cart/cart.component';
 
 @Component({
   selector: 'app-book',

@@ -20,6 +20,8 @@ import { CartbodyComponent } from './Body/Cart/cartbody/cartbody.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './Common/order/order.component';
+import { LoginComponent } from './Login/login/login.component';
+import { HomeComponent } from './Body/home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { OrderComponent } from './Common/order/order.component';
     FashComponent,
     CartComponent,
     CartbodyComponent,
-    OrderComponent
+    OrderComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

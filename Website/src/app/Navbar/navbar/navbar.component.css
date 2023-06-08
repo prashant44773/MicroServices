@@ -25,3 +25,7 @@ nav {
   font-family: "Kanit", sans-serif;
   font-family: "Lexend Deca", sans-serif;
 }
+
+.navImg{
+  border-radius: 50%;
+}

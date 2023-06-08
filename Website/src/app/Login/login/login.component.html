@@ -1,0 +1,117 @@
+<!-- <p>login works!</p> -->
+<section class="vh-100" style="background-color: lightsteelblue;" *ngIf="!ActivateRegisterPage">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="assets/Logo/micro.png" class="img-fluid"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form [formGroup]="LoginForm">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <img src="assets/Logo/logo.jpg" alt="" height="70px" width="70px">
+                    <span class="h1 fw-bold mb-0">MicroServices</span>
+                  </div>
+
+                  <h2 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h2>
+
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="user"/>
+                    <label class="form-label" for="form2Example17">User Name</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form2Example27" class="form-control form-control-lg" formControlName="pass" />
+                    <label class="form-label" for="form2Example27">Password</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block" type="button" (click)="LoginData($event)" [disabled]="LoginForm.invalid" >Login</button>
+                  </div>
+
+                  <a class="small text-muted cur" >Forgot password?</a>
+                  <br>
+                  <br>
+                  <a class="cur" style="color: #393f81;" (click)="Activate()"> Don't have an account?  Register here</a>
+                  <!-- <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a> -->
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Register -->
+
+
+<section class="vh-100" style="background-color: lightsteelblue;" *ngIf="ActivateRegisterPage">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="assets/Logo/micro.png" class="img-fluid"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <form [formGroup]="RegisterForm">
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <img src="assets/Logo/logo.jpg" alt="" height="70px" width="70px">
+                    <span class="h1 fw-bold mb-0">MicroServices</span>
+                  </div>
+
+                  <h2 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create Your Account</h2>
+
+                  <div class="form-outline mb-2">
+                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="name"/>
+                    <label class="form-label" for="form2Example17" >Full Name</label>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <input type="email" id="form2Example17" class="form-control form-control-lg" formControlName="email"/>
+                    <label class="form-label" for="form2Example17">Email</label>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <input type="text" id="form2Example17" class="form-control form-control-lg" formControlName="user"/>
+                    <label class="form-label" for="form2Example17">User Name</label>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <input type="password" id="form2Example27" class="form-control form-control-lg" formControlName="pass"/>
+                    <label class="form-label" for="form2Example27">Password</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button class="btn btn-dark btn-lg btn-block" type="button" (click)="RegisterData($event)" [disabled]="RegisterForm.invalid" >Register</button>
+                  </div>
+
+                  <a class="small text-muted cur" (click)="Activate()">Already Have an Account , Go Back To Login ?</a>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

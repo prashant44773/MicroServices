@@ -11,11 +11,15 @@ import {CartServiceService} from '../cartbody/cart-service.service';
 export class CartComponent {
 
   constructor(public dialog: MatDialog , private api : CartServiceService) {
-        this.api.GetCartCount(this.UserID).subscribe((res)=>{
-            // alert(1);
-            // console.log(res);
-            this.CartCount = res;
-        });
+        this.getCount();
+  }
+
+  getCount(){
+    this.api.GetCartCount(this.UserID).subscribe((res)=>{
+      // alert(1);
+      // console.log(res);
+      this.CartCount = res;
+  });
   }
 
   UserID = 1;
