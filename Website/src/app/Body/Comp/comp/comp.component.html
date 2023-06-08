@@ -16,7 +16,7 @@
       <p class="card-text para">{{item.description}}</p>
       <h4 class="card-text text-center">{{item.price}} &#8377; </h4>
       <div class="container d-flex justify-content-between">
-        <a routerLink="/order" [state]="item" class="btn btn-danger">Order Now</a>
+        <a routerLink="/Master/order" [state]="item" class="btn btn-danger">Order Now</a>
         <a  class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
       </div>
     </div>

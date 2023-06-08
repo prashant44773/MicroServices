@@ -8,15 +8,20 @@ import { CartComponent } from './Body/Cart/cart/cart.component';
 import { OrderComponent } from './Common/order/order.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
+import { MasterComponent } from './Body/Master/master/master.component';
 
 const routes: Routes = [
-    {path:'book' , component:BookComponent},
-    {path:'comp' , component:CompComponent},
-    {path:'fash' , component:FashComponent},
-    {path:'cart' , component:CartComponent},
-    {path:'order' , component:OrderComponent},
-    {path:'login' , component:LoginComponent},
-    {path:'home' , component:HomeComponent},
+    {path:'Master' , component:MasterComponent
+        , children:[
+          {path:'book' , component:BookComponent},
+          {path:'comp' , component:CompComponent},
+          {path:'fash' , component:FashComponent},
+          {path:'cart' , component:CartComponent},
+          {path:'order' , component:OrderComponent},
+          {path:'login' , component:LoginComponent},
+          {path:'home' , component:HomeComponent}
+        ]
+    },
     {path:'bookadmin' , component:BookadminComponent}
 ];
 

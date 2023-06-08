@@ -22,6 +22,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { OrderComponent } from './Common/order/order.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
+import { MasterComponent } from './Body/Master/master/master.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HomeComponent } from './Body/home/home.component';
     CartbodyComponent,
     OrderComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    MasterComponent
   ],
   imports: [
     BrowserModule,
