@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {KeyCloakService} from '../../Common/key-cloak.service';
 import * as shajs from 'sha.js';
+import {RouterguardService} from '../../Common/Guard/routerguard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import * as shajs from 'sha.js';
 })
 export class LoginComponent {
 
-  constructor(private Api : KeyCloakService){
+  constructor(private Api : KeyCloakService , private Authenticate : RouterguardService , private route : Router){
 
   }
 
@@ -53,8 +55,11 @@ export class LoginComponent {
 
         if(res.statusCode == 200){
           this.Api.GetUserID(user,pass).subscribe((res:any)=>{
-              alert("Got The USerID");
+              // alert("Got The USerID");
               localStorage.setItem('User',res.userID);
+              // alert("You Have Been LoggedIN");
+              this.Authenticate.LoggedIn = true; // Allow user To Navigate To Home Page
+              this.route.navigate(['/Master/home']);
           });
         }
       });

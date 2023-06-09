@@ -9,9 +9,10 @@ import { OrderComponent } from './Common/order/order.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
+import {AuthGuard} from './Common/Guard/auth.guard';
 
 const routes: Routes = [
-    {path:'Master' , component:MasterComponent
+    {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
         , children:[
           {path:'book' , component:BookComponent},
           {path:'comp' , component:CompComponent},
@@ -22,8 +23,9 @@ const routes: Routes = [
           {path:'home' , component:HomeComponent}
         ]
     },
-    {path:'login' , component:LoginComponent},
-    {path:'bookadmin' , component:BookadminComponent}
+    {path:'login' , component:LoginComponent },
+    {path:'bookadmin' , component:BookadminComponent},
+    {path:'**', redirectTo:'login', pathMatch:'full'}
 ];
 
 @NgModule({
