@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CompServiceService } from './comp-service.service';
 import { Cart } from 'src/app/Common/CartModel';
+import {MessageService} from '../../../Common/message/message.service';
 
 @Component({
   selector: 'app-comp',
@@ -13,7 +14,7 @@ export class CompComponent {
 
     ReqID = 200; // For Add To Cart
 
-    constructor(private service : CompServiceService){
+    constructor(private service : CompServiceService , private msgservice : MessageService){
         service.GetCompList().subscribe((res)=>{
             console.log(res);
             this.CompList = res;
@@ -43,6 +44,12 @@ export class CompComponent {
 
       this.service.UploadToCart(Body).subscribe((res)=>{
           console.log(res);
+
+          this.ReloadMsgToCart();  //  Reload The Cart Count From Here using Service
       });
+    }
+
+    ReloadMsgToCart(){
+      this.msgservice.SendReloadMsg(true);
     }
 }

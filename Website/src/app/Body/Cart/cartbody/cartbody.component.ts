@@ -8,6 +8,7 @@ import {
 } from '@progress/kendo-angular-grid';
 import { CartServiceService } from './cart-service.service';
 import { MyCartQuantity } from './AddToCart';
+import {MessageService} from '../../../Common/message/message.service';
 
 @Component({
   selector: 'app-cartbody',
@@ -15,7 +16,7 @@ import { MyCartQuantity } from './AddToCart';
   styleUrls: ['./cartbody.component.css'],
 })
 export class CartbodyComponent {
-  constructor(private api: CartServiceService) {
+  constructor(private api: CartServiceService , private msgservice : MessageService) {
 
     this.UserID = localStorage.getItem("User");
     console.log(`This is ths UserID in the Cart :  ${this.UserID}`);
@@ -97,6 +98,11 @@ export class CartbodyComponent {
     this.api.RemoveFromCart(Remove).subscribe((res) => {
       console.log(res);
       this.LoadCartDataApi();
+      this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
     });
+  }
+
+  ReloadMsgToCart(){
+    this.msgservice.SendReloadMsg(true);
   }
 }

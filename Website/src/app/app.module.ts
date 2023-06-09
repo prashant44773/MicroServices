@@ -24,6 +24,7 @@ import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

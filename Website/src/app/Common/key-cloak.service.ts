@@ -6,6 +6,9 @@ import { LogUser } from './login';
   providedIn: 'root',
 })
 export class KeyCloakService {
+
+  // Using This Service For login
+
   regApi: LogUser;
   logApi: LogUser;
 

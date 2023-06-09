@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {BookService} from './book.service';
 import { Cart } from 'src/app/Common/CartModel';
-import { CartComponent } from '../../Cart/cart/cart.component';
+import {MessageService} from '../../../Common/message/message.service';
 
 @Component({
   selector: 'app-book',
@@ -14,7 +14,7 @@ export class BookComponent {
 
   ReqID = 100; // For Add To Cart
 
-    constructor(private service : BookService){
+    constructor(private service : BookService , private msgservice : MessageService){
         service.GetBookList().subscribe((res)=>{
             console.log(res);
             this.BookList = res;
@@ -28,7 +28,7 @@ export class BookComponent {
 
 
     AddToCart(item){
-      alert("Adding To Cart");
+      // alert("Adding To Cart");
       // console.log(item);
 
       let Body:Cart = {
@@ -45,6 +45,13 @@ export class BookComponent {
 
       this.service.UploadToCart(Body).subscribe((res)=>{
           console.log(res);
+
+          this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
       });
+    }
+
+
+    ReloadMsgToCart(){
+      this.msgservice.SendReloadMsg(true);
     }
 }
