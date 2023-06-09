@@ -1,6 +1,9 @@
 export class Cart{
-  public UserID;
-  public ProductID;
+  public ID;
+  public Title;
   public Price;
-  public RequestID;
+  public Image;
+  public Quantity;
+  public UserID;
+  public ReqID;
 };

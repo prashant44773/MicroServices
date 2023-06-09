@@ -11,18 +11,21 @@ import {CartServiceService} from '../cartbody/cart-service.service';
 export class CartComponent {
 
   constructor(public dialog: MatDialog , private api : CartServiceService) {
-        this.getCount();
+
+    this.UserID = localStorage.getItem("User");
+
+    this.getCount();
   }
 
   getCount(){
-    this.api.GetCartCount(this.UserID).subscribe((res)=>{
-      // alert(1);
-      // console.log(res);
+    this.api.GetCartCount(parseInt(this.UserID)).subscribe((res)=>{
+      alert("Getting Cart Count");
+      console.log(res);
       this.CartCount = res;
   });
   }
 
-  UserID = 1;
+  UserID;
 
   CartCount;
 

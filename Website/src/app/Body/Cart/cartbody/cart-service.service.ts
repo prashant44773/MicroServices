@@ -25,7 +25,7 @@ export class CartServiceService {
 
 
   GetCartList(ID:number){
-
+    // alert(ID);
     let QueryParams = new HttpParams().append("UserID",ID);
 
     return this.api.get(this.cart , {params : QueryParams});

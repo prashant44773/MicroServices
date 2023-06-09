@@ -9,6 +9,8 @@ import { Cart } from 'src/app/Common/CartModel';
 })
 export class FashComponent {
 
+  UserID;
+
   ReqID = 300; // For Add To Cart
 
   constructor(private service : FashService){
@@ -16,6 +18,8 @@ export class FashComponent {
           console.log(res);
           this.FashList = res;
       });
+
+      this.UserID = localStorage.getItem("User");
   }
 
   FashList;
@@ -26,10 +30,13 @@ export class FashComponent {
     // console.log(item);
 
     let Body:Cart = {
-      Price : item.price,
-      ProductID : item.id,
-      RequestID : this.ReqID,
-      UserID : 1
+      ID : item.id,
+        Title:item.title,
+        Price : item.price,
+        Image : item.image,
+        Quantity : 1,
+        UserID : parseInt(this.UserID),
+        ReqID : this.ReqID
     };
 
     console.log(Body);

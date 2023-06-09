@@ -16,18 +16,22 @@ import { MyCartQuantity } from './AddToCart';
 })
 export class CartbodyComponent {
   constructor(private api: CartServiceService) {
+
+    this.UserID = localStorage.getItem("User");
+    console.log(`This is ths UserID in the Cart :  ${this.UserID}`);
+
     this.LoadCartDataApi();
   }
 
   LoadCartDataApi() {
     // So we Can Reload Cart Data After Updates and Deleteions
-    this.api.GetCartList(this.UserID).subscribe((res) => {
+    this.api.GetCartList(parseInt(this.UserID)).subscribe((res) => {
       this.CartData = res;
       console.log(res);
     });
   }
 
-  UserID = 1;
+  UserID;  // Get User ID From LocalStorage
 
   CartData;
 
@@ -56,7 +60,7 @@ export class CartbodyComponent {
     // console.log(this.group.get('quantity')?.value);
 
     let Quan: MyCartQuantity = {
-      UserID: this.UserID,
+      UserID: parseInt(this.UserID),
       ID: this.group.get('id')?.value,
       Quantity: this.group.get('quantity')?.value,
       Price: 0,
@@ -79,7 +83,7 @@ export class CartbodyComponent {
     // console.log(args.dataItem);
 
     let Remove: MyCartQuantity = {
-      UserID: this.UserID,
+      UserID: parseInt(this.UserID),
       ID: args.dataItem.id,
       Quantity: args.dataItem.quantity,
       Price: args.dataItem.price,

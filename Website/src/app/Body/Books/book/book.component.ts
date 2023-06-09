@@ -10,6 +10,8 @@ import { CartComponent } from '../../Cart/cart/cart.component';
 })
 export class BookComponent {
 
+  UserID ;  // Get User ID From LocalStorage
+
   ReqID = 100; // For Add To Cart
 
     constructor(private service : BookService){
@@ -17,6 +19,9 @@ export class BookComponent {
             console.log(res);
             this.BookList = res;
         });
+
+        this.UserID = localStorage.getItem("User");
+        console.log(this.UserID);
     }
 
     BookList;
@@ -27,10 +32,13 @@ export class BookComponent {
       // console.log(item);
 
       let Body:Cart = {
+        ID : item.id,
+        Title:item.title,
         Price : item.price,
-        ProductID : item.id,
-        RequestID : this.ReqID,
-        UserID : 1
+        Image : item.image,
+        Quantity : 1,
+        UserID : parseInt(this.UserID),
+        ReqID : this.ReqID
       };
 
       console.log(Body);

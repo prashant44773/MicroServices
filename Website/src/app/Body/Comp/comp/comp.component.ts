@@ -9,6 +9,8 @@ import { Cart } from 'src/app/Common/CartModel';
 })
 export class CompComponent {
 
+    UserID;
+
     ReqID = 200; // For Add To Cart
 
     constructor(private service : CompServiceService){
@@ -16,6 +18,8 @@ export class CompComponent {
             console.log(res);
             this.CompList = res;
         });
+
+        this.UserID = localStorage.getItem("User");
     }
 
     CompList;
@@ -26,10 +30,13 @@ export class CompComponent {
       // console.log(item);
 
       let Body:Cart = {
+        ID : item.id,
+        Title:item.title,
         Price : item.price,
-        ProductID : item.id,
-        RequestID : this.ReqID,
-        UserID : 1
+        Image : item.image,
+        Quantity : 1,
+        UserID : parseInt(this.UserID),
+        ReqID : this.ReqID
       };
 
       console.log(Body);
