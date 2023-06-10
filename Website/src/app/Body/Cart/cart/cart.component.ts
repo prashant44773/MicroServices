@@ -52,4 +52,9 @@ export class CartComponent implements OnInit {
       this.getCount(); // Reloading the Count of AddedCarts
     });
   }
+
+
+  LogOut(){
+    alert("LoggingOut");
+  }
 }

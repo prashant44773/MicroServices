@@ -1,6 +1,15 @@
 <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
 
-<button mat-raised-button color="accent" (click)="openDialog()"
+<div class="container">
+
+  <button mat-raised-button color="warn" (click)="LogOut()"
+    matBadgeColor="warn">
+    <i class="bi bi-box-arrow-right fa-lg"></i>  LogOut
+  </button>
+
+  <button mat-raised-button color="accent" (click)="openDialog()"
     matBadge="{{CartCount}}" matBadgePosition="before" matBadgeColor="warn">
     <i class="bi bi-bag-check-fill fa-lg"></i> Your Cart
-</button>
+  </button>
+
+</div>

@@ -12,7 +12,8 @@ import { MasterComponent } from './Body/Master/master/master.component';
 import {AuthGuard} from './Common/Guard/auth.guard';
 
 const routes: Routes = [
-    {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
+    // {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
+    {path:'Master' , component:MasterComponent
         , children:[
           {path:'book' , component:BookComponent},
           {path:'comp' , component:CompComponent},
