@@ -23,7 +23,8 @@ import { OrderComponent } from './Common/order/order.component';
 import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
-
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { MasterComponent } from './Body/Master/master/master.component';
     MatDialogModule,
     MatButtonModule,
     GridModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MdbCarouselModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

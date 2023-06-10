@@ -1,0 +1,85 @@
+mdb-carousel-item{
+  height: 550px;
+}
+
+.img-fluid{
+  height: 550px;
+}
+
+.btnStyle{
+  width:220px;
+  color: white;
+  border-radius: 25px;
+  /* border:1px solid white; */
+}
+
+.title{
+  color: white;
+  font-size: 2rem;
+}
+
+
+/* Products Section */
+.products{
+  width: 100%;
+}
+.container{
+  width: 100%;
+  height: auto;
+  /* justify-content: space-around; */
+  justify-content: space-between;
+}
+
+.imgStyle{
+  /* width: 24%; */
+  width: 32%;
+  height: 8%;
+}
+
+.img-fluidPro{
+  height: 300px;
+  width: 100%;
+}
+
+
+/* Service Section */
+.services{
+  /* background-color: cornflowerblue; */
+  background-color: white;
+}
+
+mat-grid-tile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(38, 36, 36);
+}
+
+.icons{
+  color: orange;
+}
+
+.box{
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 55%;
+}
+
+.desc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.desc h2{
+  height: 17px;
+}
+
+.desc h5{
+  height: 28px;
+  font-weight: 600;
+}
