@@ -10,6 +10,7 @@ import { LoginComponent } from './Login/login/login.component';
 import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
 import {AuthGuard} from './Common/Guard/auth.guard';
+import { OfflinepaymentComponent } from './Common/Payment/COD/offlinepayment/offlinepayment.component';
 
 const routes: Routes = [
     // {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
@@ -20,8 +21,8 @@ const routes: Routes = [
           {path:'fash' , component:FashComponent},
           {path:'cart' , component:CartComponent},
           {path:'order' , component:OrderComponent},
-          {path:'login' , component:LoginComponent},
-          {path:'home' , component:HomeComponent}
+          {path:'home' , component:HomeComponent},
+          {path:'offline' , component:OfflinepaymentComponent}
         ]
     },
     {path:'' , component:LoginComponent },

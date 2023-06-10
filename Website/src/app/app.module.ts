@@ -25,6 +25,11 @@ import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { OfflinepaymentComponent } from './Common/Payment/COD/offlinepayment/offlinepayment.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     OrderComponent,
     LoginComponent,
     HomeComponent,
-    MasterComponent
+    MasterComponent,
+    OfflinepaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     GridModule,
     MatBadgeModule,
     MdbCarouselModule,
-    MatGridListModule
+    MatGridListModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
