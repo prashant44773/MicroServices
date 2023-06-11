@@ -12,6 +12,8 @@ export class OrderComponent implements OnInit{
     constructor(public routeData : ActivatedRoute) { }
 
     Ordered:any;
+    // Ordered:any = [{id:45,title:"Hello",price:1000,Qua:4},{id:46,title:"From",price:1300,Qua:2},{id:47,title:"Order",price:500,Qua:6}];
+    // Ordered:any = {id:45,title:"Hello",price:1000,Qua:4};
 
     TheImagePath;
 

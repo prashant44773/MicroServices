@@ -12,5 +12,5 @@ export class ProductFormData{
     public Code;
     public Country;
     public Products:Cart[];
-    public CardDetails:Payment[];
+    public CardDetails:Payment;
 }

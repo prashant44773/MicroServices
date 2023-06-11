@@ -10,6 +10,7 @@ import { OnlinePaymentComponent } from '../../Online/online-payment/online-payme
 import { ProductFormData } from '../../ProductFormModel';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
+import { Cart } from 'src/app/Common/CartModel';
 
 @Component({
   selector: 'app-offlinepayment',
@@ -18,9 +19,11 @@ import { map } from 'rxjs';
 })
 export class OfflinepaymentComponent implements OnInit {
   constructor(public dialog: MatDialog, public routeData: ActivatedRoute) {
+    this.UserID = localStorage.getItem('User');
+    // console.log(parseInt(this.UserID));
 
-    this.UserID = localStorage.getItem("User");
-    console.log(parseInt(this.UserID));
+    // console.log('Testing Type');
+    // console.log(this instanceof Array);
   }
 
   ngOnInit(): void {
@@ -28,10 +31,9 @@ export class OfflinepaymentComponent implements OnInit {
     this.routeData.paramMap
       .pipe(map(() => window.history.state))
       .subscribe((res) => {
-        this.CustomerOrders = res[0];
         console.log('Routed Object');
-        // console.log(this.CustomerOrders);
-        // console.log(res[1]);
+        // console.log(res);
+        // console.log(res[0]);
 
         if (res[1] == 'Online') {
           this.OnlinePayment = true;
@@ -39,14 +41,58 @@ export class OfflinepaymentComponent implements OnInit {
         if (res[1] == 'Offline') {
           this.OnlinePayment = false;
         }
+
+        // Checking if its an ArrayOrNot
+        if (res[0] instanceof Array) {
+          alert("it's an Array");
+
+          this.isArray = true;
+
+          this.CustomerOrders = res[0];
+
+          let Count = 0;
+          this.CustomerOrders.forEach((element) => {
+            if (Count == 0) {
+              this.ProductName = element.title;
+            } else {
+              this.ProductName = this.ProductName + '  ,  ' + element.title;
+            }
+            Count = Count + 1;
+          });
+          console.log(this.CustomerOrders);
+        } else {
+          alert("it's Not an Array");
+
+          this.isArray = false;
+
+          // Process The Object Into ObjectList
+          this.ProductName = res[0].title;
+
+          let data: Cart = {
+            ID: res[0].title,
+            Title: res[0].title,
+            Price: res[0].price,
+            Image: res[0].image,
+            Quantity: res[0].Qua,
+            UserID: parseInt(this.UserID),
+            ReqID: res[0].reqID,
+          };
+
+          this.CustomerOrders.push(data);
+          console.log(this.CustomerOrders);
+        }
       });
   }
 
+  isArray: Boolean; // To Check whether the Coming DataType is Array Or Object
+  // (this is For OnlinePayment Components Order Recap)
+
   UserID;
 
-  CustomerOrders;
+  // CustomerOrders;
+  CustomerOrders: any = [];
 
-  ProductName = "Can't Hurt Me";
+  ProductName = 'Test';
 
   TermsAndConditions: Boolean = false;
 
@@ -82,16 +128,26 @@ export class OfflinepaymentComponent implements OnInit {
 
   Submit() {
     if (this.TermsAndConditions) {
-      alert('Form Data');
+      // alert('Form Data');
 
-      // let Customer:ProductFormData = {
-      //     UserID =
-      // };
+      let Customer: ProductFormData = {
+        UserID: parseInt(this.UserID),
+        Name: this.ProductForm.get(['Name'])?.value,
+        LastName: this.ProductForm.get(['LastName'])?.value,
+        Date: this.ProductForm.get(['Date'])?.value as Date,
+        Address: this.ProductForm.get(['Address'])?.value,
+        City: this.ProductForm.get(['City'])?.value,
+        Region: this.ProductForm.get(['Region'])?.value,
+        Code: this.ProductForm.get(['Code'])?.value,
+        Country: this.ProductForm.get(['Country'])?.value,
+        Products: this.CustomerOrders,
+        CardDetails: { CardNumber: 0, CardHolderName: '', CardType: '' },
+      };
 
-      // this.ProductForm.get(['Name'])?.value // Product FormData
+      console.log(Customer); // Product FormData
 
       if (this.OnlinePayment) {
-        this.openDialog();
+        this.openDialog(Customer);
       }
     } else {
       alert('Agree With Terms And Conditions By Click On Button');
@@ -111,12 +167,15 @@ export class OfflinepaymentComponent implements OnInit {
     });
   }
 
-  openDialog(): void {
+  openDialog(CustomerCredentials: ProductFormData): void {
     const dialogRef = this.dialog.open(OnlinePaymentComponent, {
       height: 'inherit',
       // height:'100%',
       width: '100%',
-      data: this.ProductForm.value,
+      data: {
+        ProductData: CustomerCredentials,
+        isArray: this.isArray
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
