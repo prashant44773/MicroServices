@@ -8,7 +8,7 @@ import {
 } from '@progress/kendo-angular-grid';
 import { CartServiceService } from './cart-service.service';
 import { MyCartQuantity } from './AddToCart';
-import {MessageService} from '../../../Common/message/message.service';
+import { MessageService } from '../../../Common/message/message.service';
 
 @Component({
   selector: 'app-cartbody',
@@ -16,9 +16,11 @@ import {MessageService} from '../../../Common/message/message.service';
   styleUrls: ['./cartbody.component.css'],
 })
 export class CartbodyComponent {
-  constructor(private api: CartServiceService , private msgservice : MessageService) {
-
-    this.UserID = localStorage.getItem("User");
+  constructor(
+    private api: CartServiceService,
+    private msgservice: MessageService
+  ) {
+    this.UserID = localStorage.getItem('User');
     console.log(`This is ths UserID in the Cart :  ${this.UserID}`);
 
     this.LoadCartDataApi();
@@ -32,7 +34,7 @@ export class CartbodyComponent {
     });
   }
 
-  UserID;  // Get User ID From LocalStorage
+  UserID; // Get User ID From LocalStorage
 
   CartData;
 
@@ -79,7 +81,6 @@ export class CartbodyComponent {
   }
 
   public removeHandler(args: RemoveEvent): void {
-
     alert('Remove');
     // console.log(args.dataItem);
 
@@ -102,7 +103,13 @@ export class CartbodyComponent {
     });
   }
 
-  ReloadMsgToCart(){
+  ReloadMsgToCart() {
     this.msgservice.SendReloadMsg(true);
   }
+
+  // Calculating Totals For Grid
+  CalculateTotals(GridData) {
+
+  }
+  // Calculating Totals For Grid
 }

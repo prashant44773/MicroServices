@@ -10,6 +10,10 @@
     (save)="saveHandler($event)"
     (remove)="removeHandler($event)"
     >
+    <ng-template kendoGridToolbarTemplate>
+      <button mat-raised-button mat-dialog-close color="primary" routerLink="/Master/offline" [state]="[CartData,'Offline']">Order Your Cart</button>
+      <!-- <button kendoGridAddCommand>Add new</button> -->
+    </ng-template>
       <!-- <kendo-grid-column field="id" title="ID"> </kendo-grid-column> -->
       <kendo-grid-column field="title" title="Title" [editable]="false"> </kendo-grid-column>
 
@@ -28,8 +32,17 @@
         </ng-template>
       </kendo-grid-column>
 
-      <kendo-grid-column field="price" title="Price" [editable]="false"> </kendo-grid-column>
-      <kendo-grid-column field="quantity" title="Qty" editor="numeric"> </kendo-grid-column>
+      <kendo-grid-column field="price" title="Price" [editable]="false">
+        <ng-template kendoGridFooterTemplate let-column="column">
+          Total Price  :
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="quantity" title="Qty" editor="numeric">
+        <ng-template kendoGridFooterTemplate let-column="column">
+          Total Quantity  :
+        </ng-template>
+      </kendo-grid-column>
 
       <kendo-grid-command-column title="Actions">
         <ng-template kendoGridCellTemplate>
