@@ -137,6 +137,17 @@
               <div class="row mt-3 mx-1">
                   <div class="col-12">
                       <div class="form-check">
+                        <mat-radio-group aria-label="Select an option">
+                          <mat-radio-button [checked]='OnlinePayment == false' (click)="SwitchPaymentMode('Offline')">Cash On Delivery</mat-radio-button>
+                          <mat-radio-button [checked]='OnlinePayment == true' (click)="SwitchPaymentMode('Online')">Online</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row mt-3 mx-1">
+                  <div class="col-12">
+                      <div class="form-check">
                           <mat-chip-option color="warn" (click)="Agreed()">Agree with Terms and Condition</mat-chip-option>
                       </div>
                   </div>
@@ -144,7 +155,13 @@
 
               <div class="row mt-3">
                   <div class="col-12">
+                  <ng-container *ngIf="OnlinePayment==false">
                     <button mat-raised-button class="d-block mx-auto" color="primary" [disabled]="ProductForm.invalid" (click)="Submit()">Place Order</button>
+                  </ng-container>
+                  <ng-container *ngIf="OnlinePayment">
+                    <button mat-raised-button class="d-block mx-auto" color="primary" [disabled]="ProductForm.invalid" (click)="Submit()">Pay Now</button>
+                  </ng-container>
+
                   </div>
               </div>
           </div>

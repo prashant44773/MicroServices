@@ -1,4 +1,4 @@
-<section style="background-color: #eee;">
+<!-- <section style="background-color: #eee;"> -->
   <div class="container py-5">
     <div class="card">
       <div class="card-body">
@@ -106,9 +106,10 @@
             </div>
           </div>
 
-          <div class="col-md-5 col-xl-5 offset-xl-1">
+          <!-- <div class="col-md-5 col-xl-5 offset-xl-1"> -->
+          <div class="col-md-5 col-xl-5 orderDetails">
             <div class="py-4 d-flex justify-content-end">
-              <h6><a href="#!">Cancel and return to website</a></h6>
+              <button mat-raised-button mat-dialog-close color="warn" routerLink="/Master/offline">Cancel And Return To Website</button>
             </div>
 
             <ng-container *ngIf="SingleProduct">
@@ -190,4 +191,4 @@
       </div>
     </div>
   </div>
-</section>
+<!-- </section> -->

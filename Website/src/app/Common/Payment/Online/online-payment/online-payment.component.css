@@ -38,3 +38,7 @@ mat-radio-button{
 button{
   width: 100%;
 }
+
+.orderDetails{
+  margin-top: 6px;
+}

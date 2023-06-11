@@ -16,8 +16,8 @@
           <h1 class="card-title">{{Ordered.title}}</h1>
           <p class="card-text">{{Ordered.description}}</p>
           <div class="container d-flex justify-content-between">
-            <a routerLink="#!" class="btn btn-danger">Cash On Delivery</a>
-            <a routerLink="#!" class="btn btn-success">Pay Online</a>
+            <a routerLink="/Master/offline" [state]="[Ordered,'Offline']" class="btn btn-danger">Cash On Delivery</a>
+            <a routerLink="/Master/offline" [state]="[Ordered,'Online']" class="btn btn-success">Pay Online</a>
           </div>
         </div>
       </div>
