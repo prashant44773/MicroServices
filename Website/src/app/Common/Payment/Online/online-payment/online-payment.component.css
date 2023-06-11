@@ -1,0 +1,40 @@
+.payCard{
+    width: 620px;
+  }
+
+.payCard2{
+    width: 620px;
+    margin-top: 30px;
+}
+
+.cardnum{
+  width: 260px;
+}
+
+.cardExp{
+  /* width: 160px; */
+  width: 235px;
+}
+
+.cardCvv{
+  width: 130px;
+}
+
+input{
+  border: 1px solid black;
+}
+
+
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+
+mat-radio-button{
+  margin-bottom: 30px;
+}
+
+
+button{
+  width: 100%;
+}

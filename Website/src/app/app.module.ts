@@ -30,6 +30,8 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
+import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/online-payment.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     LoginComponent,
     HomeComponent,
     MasterComponent,
-    OfflinepaymentComponent
+    OfflinepaymentComponent,
+    OnlinePaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatChipsModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

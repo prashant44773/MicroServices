@@ -1,0 +1,193 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row d-flex justify-content-center pb-5">
+          <div class="col-md-7 col-xl-5 mb-4 mb-md-0 payCard2">
+            <div class="row d-flex justify-content-center">
+              <div class="col-md-10 col-lg-8 col-xl-5 payCard">
+                <div class="card rounded-3">
+                  <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                      <h1>Online Payment</h1>
+                    </div>
+                    <form [formGroup]="PaymentForm">
+                      <p class="fw-bold mb-4 pb-2">Select Card :</p>
+
+                      <mat-radio-group aria-label="Select an option">
+
+                      <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                        <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                        <div class="flex-fill mx-3">
+                          <div class="form-outline">
+                            <input type="text" id="formControlLgXc" class="form-control form-control-lg"
+                              value="**** **** **** XXXX" readonly/>
+                            <label class="form-label" for="formControlLgXc">Card Number</label>
+                          </div>
+                        </div>
+                        <mat-radio-button value="Debit" (change)="SelectedCard($event)">Debit</mat-radio-button>
+                      </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                        <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />
+                        <div class="flex-fill mx-3">
+                          <div class="form-outline">
+                            <input type="text" id="formControlLgXs" class="form-control form-control-lg"
+                              value="**** **** **** XXXX" readonly/>
+                            <label class="form-label" for="formControlLgXs">Card Number</label>
+                          </div>
+                        </div>
+                        <mat-radio-button value="Credit" (change)="SelectedCard($event)">Visa</mat-radio-button>
+                      </div>
+
+                    </mat-radio-group>
+
+                    <ng-container *ngIf="ShowCardDetails">
+
+                      <p class="fw-bold mb-4">Enter Card Details :</p>
+
+                      <div class="form-outline mb-4">
+                        <input type="text" id="formControlLgXsd" class="form-control form-control-lg"
+                          placeholder="Ex :- Anna Doe" formControlName="Name" />
+                        <label class="form-label" for="formControlLgXsd">Cardholder's Name</label>
+                        <mat-error *ngIf="PaymentForm.get(['Name'])?.touched">
+                          <br>
+                          <mat-error *ngIf="PaymentForm.get(['Name'])?.errors?.['required']">The Name is Required.{{getFormValidationErrors()}}</mat-error>
+                          <mat-error *ngIf="PaymentForm.get(['Name'])?.errors?.['minlength']">Name must be at least 4 characters long.{{getFormValidationErrors()}}</mat-error>
+                        </mat-error>
+                      </div>
+
+                      <div class="row mb-4">
+                        <div class="col-6 cardnum">
+                          <div class="form-outline">
+                            <input type="text" id="formControlLgXM" class="form-control form-control-lg"
+                              placeholder="1234 5678 1234 XXXX"  formControlName="Number" />
+                            <label class="form-label" for="formControlLgXM">Card Number</label>
+                            <mat-error *ngIf="PaymentForm.get(['Number'])?.touched">
+                              <br>
+                              <mat-error *ngIf="PaymentForm.get(['Number'])?.errors?.['required']">The Card Number is Required.{{getFormValidationErrors()}}</mat-error>
+                              <mat-error *ngIf="PaymentForm.get(['Number'])?.errors?.['minlength']">Number must be 12 characters long.{{getFormValidationErrors()}}</mat-error>
+                            </mat-error>
+                          </div>
+                        </div>
+                        <div class="col-3 cardExp">
+                          <div class="form-outline">
+                            <input type="month" id="formControlLgExpk" class="form-control form-control-lg"
+                              placeholder="MM/YYYY" formControlName="Expire" />
+                            <label class="form-label" for="formControlLgExpk">Expire</label>
+                            <mat-error *ngIf="PaymentForm.get(['Expire'])?.touched">
+                              <br>
+                              <mat-error *ngIf="PaymentForm.get(['Expire'])?.errors?.['required']">The Expire Date is Required.{{getFormValidationErrors()}}</mat-error>
+                            </mat-error>
+                          </div>
+                        </div>
+                        <div class="col-2 cardCvv">
+                          <div class="form-outline">
+                            <input type="text" id="formControlLgcvv" class="form-control form-control-lg"
+                              placeholder="Cvv" formControlName="Cvv" />
+                            <label class="form-label" for="formControlLgcvv">Cvv</label>
+                            <mat-error *ngIf="PaymentForm.get(['Cvv'])?.touched">
+                              <br>
+                              <mat-error *ngIf="PaymentForm.get(['Cvv'])?.errors?.['required']">The Cvv is Required.{{getFormValidationErrors()}}</mat-error>
+                              <mat-error *ngIf="PaymentForm.get(['Cvv'])?.errors?.['minlength']">Cvv must be 3 characters long.{{getFormValidationErrors()}}</mat-error>
+                            </mat-error>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button mat-raised-button color="primary" (click)="(PaymentSubmit())" [disabled]="PaymentForm.invalid">Proceed To Pay</button>
+
+                    </ng-container>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 col-xl-5 offset-xl-1">
+            <div class="py-4 d-flex justify-content-end">
+              <h6><a href="#!">Cancel and return to website</a></h6>
+            </div>
+
+            <ng-container *ngIf="SingleProduct">
+
+            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
+              <div class="p-2 me-3">
+                <h1>Order Recap</h1>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Product Quantity</div>
+                <div class="ms-auto">1</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Product Price</div>
+                <div class="ms-auto">0.00 &#8377;</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">GST Taxes</div>
+                <div class="ms-auto">18 %</div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Shipping Cost (Delivery Charge)</div>
+                <div class="ms-auto">300  &#8377; </div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Insurance Responsibility</div>
+                <div class="ms-auto"><b>100 %</b></div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8"><b>Grand Total</b></div>
+                <div class="ms-auto"><b class="text-success">85.00 &#8377;</b></div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          <ng-container *ngIf="SingleProduct == false">
+
+            <div class="rounded d-flex flex-column p-2" style="background-color: #f8f9fa;">
+              <div class="p-2 me-3">
+                <h1>Order Recap</h1>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Product Quantity</div>
+                <div class="ms-auto">10</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">Product Price</div>
+                <div class="ms-auto">0.00 &#8377;</div>
+              </div>
+              <div class="p-2 d-flex">
+                <div class="col-8">GST Taxes</div>
+                <div class="ms-auto">18 %</div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Shipping Cost (Delivery Charge)</div>
+                <div class="ms-auto">300  &#8377; </div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8">Insurance Responsibility</div>
+                <div class="ms-auto"><b>100 %</b></div>
+              </div>
+              <div class="border-top px-2 mx-2"></div>
+              <div class="p-2 d-flex pt-3">
+                <div class="col-8"><b>Grand Total</b></div>
+                <div class="ms-auto"><b class="text-success">85.00 &#8377;</b></div>
+              </div>
+            </div>
+
+          </ng-container>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

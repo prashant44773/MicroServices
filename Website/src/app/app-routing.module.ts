@@ -11,6 +11,7 @@ import { HomeComponent } from './Body/home/home.component';
 import { MasterComponent } from './Body/Master/master/master.component';
 import {AuthGuard} from './Common/Guard/auth.guard';
 import { OfflinepaymentComponent } from './Common/Payment/COD/offlinepayment/offlinepayment.component';
+import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/online-payment.component';
 
 const routes: Routes = [
     // {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
@@ -22,7 +23,8 @@ const routes: Routes = [
           {path:'cart' , component:CartComponent},
           {path:'order' , component:OrderComponent},
           {path:'home' , component:HomeComponent},
-          {path:'offline' , component:OfflinepaymentComponent}
+          {path:'offline' , component:OfflinepaymentComponent},
+          {path:'online' , component:OnlinePaymentComponent}
         ]
     },
     {path:'' , component:LoginComponent },
