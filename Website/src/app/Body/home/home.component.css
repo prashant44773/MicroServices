@@ -83,3 +83,14 @@ mat-grid-tile{
   height: 28px;
   font-weight: 600;
 }
+
+
+.para{
+  height:60px;
+  line-height:20px; /* Height / no. of lines to display */
+  overflow:hidden;
+}
+
+.btnColor{
+  background:orangered;
+}

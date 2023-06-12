@@ -28,15 +28,32 @@ export class CartbodyComponent {
 
   LoadCartDataApi() {
     // So we Can Reload Cart Data After Updates and Deleteions
-    this.api.GetCartList(parseInt(this.UserID)).subscribe((res) => {
+    this.api.GetCartList(parseInt(this.UserID)).subscribe((res:any) => {
       this.CartData = res;
       console.log(res);
+
+      //Calculate Totals
+      let count = 0;
+      res.forEach(element => {
+        if(count == 0){
+          this.TotalQuantity = element.quantity;
+          this.TotalPrice = element.price * element.quantity;
+        }
+        else{
+          this.TotalQuantity = this.TotalQuantity + element.quantity;
+          this.TotalPrice =this.TotalPrice + element.price * element.quantity;
+        }
+        count = count + 1;
+      });
     });
   }
 
   UserID; // Get User ID From LocalStorage
 
   CartData;
+
+  TotalQuantity; // Products
+  TotalPrice;  // Price * Quantity
 
   group: FormGroup; // FormGroup For Editing
 
@@ -106,10 +123,4 @@ export class CartbodyComponent {
   ReloadMsgToCart() {
     this.msgservice.SendReloadMsg(true);
   }
-
-  // Calculating Totals For Grid
-  CalculateTotals(GridData) {
-
-  }
-  // Calculating Totals For Grid
 }

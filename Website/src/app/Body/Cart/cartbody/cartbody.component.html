@@ -1,9 +1,9 @@
 
-<br>
+<!-- <br> -->
   <h1 mat-dialog-title class="text-center">Add To Cart</h1>
-<br>
+<!-- <br> -->
 
-  <mat-dialog-content class="mat-typography">
+  <mat-dialog-content class="mat-typography mt-1">
     <kendo-grid [data]="CartData"
     (edit)="editHandler($event)"
     (cancel)="cancelHandler($event)"
@@ -34,13 +34,13 @@
 
       <kendo-grid-column field="price" title="Price" [editable]="false">
         <ng-template kendoGridFooterTemplate let-column="column">
-          Total Price  :
+          Total Price  :   {{TotalPrice}}
         </ng-template>
       </kendo-grid-column>
 
       <kendo-grid-column field="quantity" title="Qty" editor="numeric">
         <ng-template kendoGridFooterTemplate let-column="column">
-          Total Quantity  :
+          Total Quantity  :  {{TotalQuantity}}
         </ng-template>
       </kendo-grid-column>
 

@@ -11,6 +11,7 @@ import { ProductFormData } from '../../ProductFormModel';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { Cart } from 'src/app/Common/CartModel';
+import { Element } from '@progress/kendo-drawing';
 
 @Component({
   selector: 'app-offlinepayment',
@@ -33,7 +34,7 @@ export class OfflinepaymentComponent implements OnInit {
       .subscribe((res) => {
         console.log('Routed Object');
         // console.log(res);
-        // console.log(res[0]);
+        console.log(res[0]);
 
         if (res[1] == 'Online') {
           this.OnlinePayment = true;
@@ -48,14 +49,28 @@ export class OfflinepaymentComponent implements OnInit {
 
           this.isArray = true;
 
-          this.CustomerOrders = res[0];
+          // this.CustomerOrders = res[0];
+          res[0].forEach((element)=>{
+
+            let data: Cart = {
+              ID: element.id,
+              Title: element.title,
+              Price: element.price,
+              Image: element.image,
+              Quantity: element.quantity,
+              UserID: parseInt(this.UserID),
+              ReqID: element.reqID,
+            };
+
+            this.CustomerOrders.push(data);
+          });
 
           let Count = 0;
           this.CustomerOrders.forEach((element) => {
             if (Count == 0) {
-              this.ProductName = element.title;
+              this.ProductName = element.Title;
             } else {
-              this.ProductName = this.ProductName + '  ,  ' + element.title;
+              this.ProductName = this.ProductName + '  ,  ' + element.Title;
             }
             Count = Count + 1;
           });
@@ -69,11 +84,12 @@ export class OfflinepaymentComponent implements OnInit {
           this.ProductName = res[0].title;
 
           let data: Cart = {
-            ID: res[0].title,
+            ID: res[0].id,
             Title: res[0].title,
             Price: res[0].price,
             Image: res[0].image,
-            Quantity: res[0].Qua,
+            // Quantity: res[0].Qua,
+            Quantity: 1,
             UserID: parseInt(this.UserID),
             ReqID: res[0].reqID,
           };

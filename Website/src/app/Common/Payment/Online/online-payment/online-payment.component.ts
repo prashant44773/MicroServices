@@ -25,13 +25,13 @@ export class OnlinePaymentComponent {
       let Count = 0;
       data.ProductData.Products.forEach((element) => {
         if (Count == 0) {
-            this.TotalQuantity = element.Qua;
-            this.TotalPrice = element.price * element.Qua;
+            this.TotalQuantity = element.Quantity;
+            this.TotalPrice = element.Price * element.Quantity;
         }
         else
         {
-          this.TotalQuantity = this.TotalQuantity +  element.Qua;
-          this.TotalPrice = this.TotalPrice + element.price * element.Qua;
+          this.TotalQuantity = this.TotalQuantity +  element.Quantity;
+          this.TotalPrice = this.TotalPrice + element.Price * element.Quantity;
         }
         Count = Count + 1;
       });

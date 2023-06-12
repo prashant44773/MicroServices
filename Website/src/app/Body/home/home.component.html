@@ -8,7 +8,7 @@
       class="img-fluid d-block w-100"
       alt="..." />
     <div class="carousel-caption d-none d-md-block">
-      <h1 class="title">Women's Clothing</h1>
+      <!-- <h1 class="title">Women's Clothing</h1> -->
       <!-- <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> -->
       <button type="button" class="btn btn-danger btnStyle" routerLink="/Master/fash"
         data-mdb-ripple-color="dark">View Collection</button>
@@ -20,7 +20,7 @@
       class="img-fluid d-block w-100"
       alt="..." />
     <div class="carousel-caption d-none d-md-block">
-      <h1 class="title">Computer Collection</h1>
+      <!-- <h1 class="title">Computer Collection</h1> -->
       <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
       <button type="button" class="btn btn-info btnStyle" routerLink="/Master/comp"
         data-mdb-ripple-color="dark">View Collection</button>
@@ -32,7 +32,7 @@
       class="img-fluid d-block w-100"
       alt="..." />
     <div class="carousel-caption d-none d-md-block">
-      <h1 class="title">Books Store</h1>
+      <!-- <h1 class="title">Books Store</h1> -->
       <!-- <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> -->
       <button type="button" class="btn btn-secondary btnStyle" routerLink="/Master/book"
         data-mdb-ripple-color="dark">View Collection</button>
@@ -85,20 +85,41 @@
 
 <div class="products container d-flex flex-wrap">
   <!-- Element -->
-  <div class="card imgStyle mt-2 mb-2 border-info">
+  <div class="card imgStyle mt-2 mb-2 border-info" *ngFor="let item of ProductsItem">
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp"
+
+      <ng-container *ngIf="item.reqID == 100">
+        <img src="assets/Images/Books/{{item.image}}"
         class="img-fluidPro" alt />
+      </ng-container>
+      <ng-container *ngIf="item.reqID == 200">
+        <img src="assets/Images/Computers/{{item.image}}"
+        class="img-fluidPro" alt />
+      </ng-container>
+      <ng-container *ngIf="item.reqID == 300">
+        <img src="assets/Images/Fashion/{{item.image}}"
+        class="img-fluidPro" alt />
+      </ng-container>
+
       <a routerLink="#!">
         <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
       </a>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title
-        and make up the bulk of the card's content.</p>
+      <h2 class="card-title text-center">{{item.title}}</h2>
+      <p class="card-text para">{{item.description}}</p>
       <div class="container d-flex justify-content-center align-items-center">
-        <a routerLink="#!" class="btn btnStyle btn-warning">Explore Now</a>
+
+        <ng-container *ngIf="item.reqID == 100">
+          <a routerLink="/Master/book" class="btn btnStyle btn-warning btnColor">Explore Now</a>
+        </ng-container>
+        <ng-container *ngIf="item.reqID == 200">
+          <a routerLink="/Master/comp" class="btn btnStyle btn-warning btnColor">Explore Now</a>
+        </ng-container>
+        <ng-container *ngIf="item.reqID == 300">
+          <a routerLink="/Master/fash" class="btn btnStyle btn-warning btnColor">Explore Now</a>
+        </ng-container>
+
       </div>
     </div>
   </div>
