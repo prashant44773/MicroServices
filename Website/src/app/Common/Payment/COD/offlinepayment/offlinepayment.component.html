@@ -79,7 +79,7 @@
                         </mat-form-field>
                         <mat-error *ngIf="ProductForm.get(['Address'])?.touched">
                           <mat-error *ngIf="ProductForm.get(['Address'])?.errors?.['required']">The Address is Required.{{getFormValidationErrors()}}</mat-error>
-                          <mat-error *ngIf="ProductForm.get(['Address'])?.errors?.['minlength']">Address must be at least 3 characters long.{{getFormValidationErrors()}}</mat-error>
+                          <mat-error *ngIf="ProductForm.get(['Address'])?.errors?.['minlength']">Address must be at least 15 characters long.{{getFormValidationErrors()}}</mat-error>
                         </mat-error>
                       </div>
                   </div>

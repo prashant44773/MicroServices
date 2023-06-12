@@ -4,6 +4,7 @@ import {KeyCloakService} from '../../Common/key-cloak.service';
 import * as shajs from 'sha.js';
 import {RouterguardService} from '../../Common/Guard/routerguard.service';
 import { Router } from '@angular/router';
+import {NotifyService} from '../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private Api : KeyCloakService , private Authenticate : RouterguardService , private route : Router){
+  constructor(private Api : KeyCloakService , private Authenticate : RouterguardService , private route : Router , private NotifyUser : NotifyService){
 
   }
 
@@ -60,6 +61,8 @@ export class LoginComponent {
               // alert("You Have Been LoggedIN");
               this.Authenticate.LoggedIn = true; // Allow user To Navigate To Home Page
               this.route.navigate(['/Master/home']);
+
+              this.NotifyUser.SendShowUpMsg(`Welcome ${user} To MicroServices App`);
           });
         }
       });
@@ -78,6 +81,7 @@ export class LoginComponent {
 
         if(res.statusCode == 200){
           this.ActivateRegisterPage =false;
+          this.NotifyUser.SendShowUpMsg(`Registration was SuccessFull`);
         }
       });
 

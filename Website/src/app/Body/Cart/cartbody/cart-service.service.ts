@@ -9,12 +9,17 @@ export class CartServiceService {
 
   constructor(private api : HttpClient) { }
 
-  Url = "https://localhost:44317/api/Cart/";
+  // Url = "https://localhost:44317/api/Cart/"; // BaseUrls
+  // cart = this.Url + "UserCart";
+  // quan = this.Url + "Quantity";
+  // Remove = this.Url + "Remove";
+  // CartCount = this.Url + "UserCartCount";
+
+  Url = "https://localhost:44358/";
   cart = this.Url + "UserCart";
   quan = this.Url + "Quantity";
   Remove = this.Url + "Remove";
   CartCount = this.Url + "UserCartCount";
-
 
   GetCartCount(ID:number){
 

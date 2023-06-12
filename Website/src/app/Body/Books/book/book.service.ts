@@ -9,9 +9,14 @@ export class BookService {
 
   constructor(private api : HttpClient) { }
 
-  getApi = "https://localhost:44392/api/Books/Get";
+  // Master GateWayApi
+  Api = "https://localhost:44358/";
 
-  cart = "https://localhost:44317/api/Cart/BookCart";
+  // getApi = "https://localhost:44392/api/Books/Get";  // BaseUrls
+  // cart = "https://localhost:44317/api/Cart/BookCart";
+
+  getApi = this.Api + "Books";
+  cart = this.Api + "BookCart";
 
   GetBookList(){
     return this.api.get(this.getApi);

@@ -18,7 +18,7 @@ export class OrderComponent implements OnInit{
     TheImagePath;
 
     ngOnInit(): void {
-        alert("Getting Routed Object");
+        // alert("Getting Routed Object");
         this.routeData.paramMap.pipe(
           map(()=> window.history.state)).subscribe(res=>{
 

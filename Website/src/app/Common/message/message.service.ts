@@ -10,7 +10,7 @@ export class MessageService {
 
   private successMsgSource = new Subject<boolean>();
 
-  ReloadMsg = this.successMsgSource.asObservable();;
+  ReloadMsg = this.successMsgSource.asObservable();
 
   SendReloadMsg(message:true){
       // alert("Message SErvice is Called");

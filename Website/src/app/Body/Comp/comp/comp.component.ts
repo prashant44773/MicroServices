@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CompServiceService } from './comp-service.service';
 import { Cart } from 'src/app/Common/CartModel';
 import {MessageService} from '../../../Common/message/message.service';
+import {NotifyService} from '../../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-comp',
@@ -14,7 +15,7 @@ export class CompComponent {
 
     ReqID = 200; // For Add To Cart
 
-    constructor(private service : CompServiceService , private msgservice : MessageService){
+    constructor(private service : CompServiceService , private msgservice : MessageService , private Notify : NotifyService){
         service.GetCompList().subscribe((res)=>{
             console.log(res);
             this.CompList = res;
@@ -27,7 +28,7 @@ export class CompComponent {
 
 
     AddToCart(item){
-      alert("Adding To Cart");
+      // alert("Adding To Cart");
       // console.log(item);
 
       let Body:Cart = {
@@ -45,6 +46,7 @@ export class CompComponent {
       this.service.UploadToCart(Body).subscribe((res)=>{
           console.log(res);
 
+          this.Notify.SendShowUpMsg("Added To Cart");
           this.ReloadMsgToCart();  //  Reload The Cart Count From Here using Service
       });
     }

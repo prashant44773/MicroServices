@@ -32,6 +32,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/online-payment.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { NotifyComponent } from './Common/Notification/notify/notify.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import {MatRadioModule} from '@angular/material/radio';
     HomeComponent,
     MasterComponent,
     OfflinepaymentComponent,
-    OnlinePaymentComponent
+    OnlinePaymentComponent,
+    NotifyComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

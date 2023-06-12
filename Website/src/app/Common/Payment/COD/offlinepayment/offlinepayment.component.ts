@@ -11,7 +11,7 @@ import { ProductFormData } from '../../ProductFormModel';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { Cart } from 'src/app/Common/CartModel';
-import { Element } from '@progress/kendo-drawing';
+import { NotifyService } from '../../../Notification/notify/notify.service';
 
 @Component({
   selector: 'app-offlinepayment',
@@ -19,7 +19,11 @@ import { Element } from '@progress/kendo-drawing';
   styleUrls: ['./offlinepayment.component.css'],
 })
 export class OfflinepaymentComponent implements OnInit {
-  constructor(public dialog: MatDialog, public routeData: ActivatedRoute) {
+  constructor(
+    public dialog: MatDialog,
+    public routeData: ActivatedRoute,
+    private Notify: NotifyService
+  ) {
     this.UserID = localStorage.getItem('User');
     // console.log(parseInt(this.UserID));
 
@@ -45,13 +49,12 @@ export class OfflinepaymentComponent implements OnInit {
 
         // Checking if its an ArrayOrNot
         if (res[0] instanceof Array) {
-          alert("it's an Array");
+          // alert("it's an Array");
 
           this.isArray = true;
 
           // this.CustomerOrders = res[0];
-          res[0].forEach((element)=>{
-
+          res[0].forEach((element) => {
             let data: Cart = {
               ID: element.id,
               Title: element.title,
@@ -76,7 +79,7 @@ export class OfflinepaymentComponent implements OnInit {
           });
           console.log(this.CustomerOrders);
         } else {
-          alert("it's Not an Array");
+          // alert("it's Not an Array");
 
           this.isArray = false;
 
@@ -164,9 +167,12 @@ export class OfflinepaymentComponent implements OnInit {
 
       if (this.OnlinePayment) {
         this.openDialog(Customer);
+      } else {
+        // Save This To DataBase With Cash ON Delivery Option
       }
     } else {
-      alert('Agree With Terms And Conditions By Click On Button');
+      // alert('Agree With Terms And Conditions By Click On Button');
+      this.Notify.SendShowUpMsg("Agree With Terms And Conditions");
     }
   }
 
@@ -190,7 +196,7 @@ export class OfflinepaymentComponent implements OnInit {
       width: '100%',
       data: {
         ProductData: CustomerCredentials,
-        isArray: this.isArray
+        isArray: this.isArray,
       },
     });
 

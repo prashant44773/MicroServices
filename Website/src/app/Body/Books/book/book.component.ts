@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {BookService} from './book.service';
 import { Cart } from 'src/app/Common/CartModel';
 import {MessageService} from '../../../Common/message/message.service';
+import {NotifyService} from '../../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-book',
@@ -14,7 +15,7 @@ export class BookComponent {
 
   ReqID = 100; // For Add To Cart
 
-    constructor(private service : BookService , private msgservice : MessageService){
+    constructor(private service : BookService , private msgservice : MessageService , private Notify : NotifyService){
         service.GetBookList().subscribe((res)=>{
             console.log(res);
             this.BookList = res;
@@ -46,6 +47,7 @@ export class BookComponent {
       this.service.UploadToCart(Body).subscribe((res)=>{
           console.log(res);
 
+          this.Notify.SendShowUpMsg("Added To Cart");
           this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
       });
     }

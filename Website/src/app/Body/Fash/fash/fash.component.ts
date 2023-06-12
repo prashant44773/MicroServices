@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FashService } from './fash.service';
 import { Cart } from 'src/app/Common/CartModel';
 import {MessageService} from '../../../Common/message/message.service';
+import {NotifyService} from '../../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-fash',
@@ -14,7 +15,7 @@ export class FashComponent {
 
   ReqID = 300; // For Add To Cart
 
-  constructor(private service : FashService , private msgservice : MessageService){
+  constructor(private service : FashService , private msgservice : MessageService , private Notify : NotifyService){
       service.GetFashList().subscribe((res)=>{
           console.log(res);
           this.FashList = res;
@@ -27,7 +28,7 @@ export class FashComponent {
 
 
   AddToCart(item){
-    alert("Adding To Cart");
+    // alert("Adding To Cart");
     // console.log(item);
 
     let Body:Cart = {
@@ -45,6 +46,7 @@ export class FashComponent {
     this.service.UploadToCart(Body).subscribe((res)=>{
         console.log(res);
 
+        this.Notify.SendShowUpMsg("Added To Cart");
         this.ReloadMsgToCart();  //  Reload The Cart Count From Here using Service
     });
   }

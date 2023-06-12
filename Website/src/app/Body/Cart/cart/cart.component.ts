@@ -5,6 +5,7 @@ import { CartServiceService } from '../cartbody/cart-service.service';
 import { MessageService } from '../../../Common/message/message.service';
 import { Router } from '@angular/router';
 import { RouterguardService } from 'src/app/Common/Guard/routerguard.service';
+import { NotifyService } from '../../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-cart',
@@ -17,7 +18,8 @@ export class CartComponent implements OnInit {
     private api: CartServiceService,
     private Message: MessageService,
     private Authenticate : RouterguardService,
-    private route : Router
+    private route : Router,
+    private Notify :NotifyService
   ) {
     this.UserID = localStorage.getItem('User');
 
@@ -59,8 +61,10 @@ export class CartComponent implements OnInit {
 
 
   LogOut(){
-    alert("LoggingOut");
+    // alert("LoggingOut");
       this.Authenticate.LoggedIn = false; // Allow user To LogOut
       this.route.navigate(['/login']);
+
+      this.Notify.SendShowUpMsg("You Have Been Logged Out");
   }
 }

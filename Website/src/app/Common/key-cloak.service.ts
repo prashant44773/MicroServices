@@ -14,7 +14,10 @@ export class KeyCloakService {
 
   constructor(private server: HttpClient) {}
 
-  Api = "https://localhost:44378/api/Login/";
+  // Master GateWayApi
+  Api = "https://localhost:44358/";
+
+  // Api = "https://localhost:44378/api/Login/";  // BaseUrl
   RegisterAPi = this.Api + 'Register';
   LoginAPi = this.Api + 'Login';
   UserID = this.Api + "GetUserID";

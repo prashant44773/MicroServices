@@ -9,6 +9,7 @@ import {
 import { CartServiceService } from './cart-service.service';
 import { MyCartQuantity } from './AddToCart';
 import { MessageService } from '../../../Common/message/message.service';
+import {NotifyService} from '../../../Common/Notification/notify/notify.service';
 
 @Component({
   selector: 'app-cartbody',
@@ -18,7 +19,8 @@ import { MessageService } from '../../../Common/message/message.service';
 export class CartbodyComponent {
   constructor(
     private api: CartServiceService,
-    private msgservice: MessageService
+    private msgservice: MessageService,
+    private Notify : NotifyService
   ) {
     this.UserID = localStorage.getItem('User');
     console.log(`This is ths UserID in the Cart :  ${this.UserID}`);
@@ -93,12 +95,13 @@ export class CartbodyComponent {
 
     this.api.UpdateQuantity(Quan).subscribe((res) => {
       console.log(res);
+      this.Notify.SendShowUpMsg("Quantity Has Been Updated");
       this.LoadCartDataApi();
     });
   }
 
   public removeHandler(args: RemoveEvent): void {
-    alert('Remove');
+    // alert('Remove');
     // console.log(args.dataItem);
 
     let Remove: MyCartQuantity = {
@@ -115,6 +118,7 @@ export class CartbodyComponent {
 
     this.api.RemoveFromCart(Remove).subscribe((res) => {
       console.log(res);
+      this.Notify.SendShowUpMsg("Product Has Been Removed");
       this.LoadCartDataApi();
       this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
     });

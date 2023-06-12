@@ -9,9 +9,13 @@ export class FashService {
 
   constructor(private api : HttpClient) { }
 
-  getApi = "https://localhost:44339/api/Fash/Get";
+  // getApi = "https://localhost:44339/api/Fash/Get"; // BaseUrls
+  // cart = "https://localhost:44317/api/Cart/FashCart";
 
-  cart = "https://localhost:44317/api/Cart/FashCart";
+  MasterApi = "https://localhost:44358/";
+
+  getApi = this.MasterApi + "Fash";
+  cart = this.MasterApi + "FashCart";
 
   GetFashList(){
     return this.api.get(this.getApi);

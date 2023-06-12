@@ -12,6 +12,7 @@ import { MasterComponent } from './Body/Master/master/master.component';
 import {AuthGuard} from './Common/Guard/auth.guard';
 import { OfflinepaymentComponent } from './Common/Payment/COD/offlinepayment/offlinepayment.component';
 import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/online-payment.component';
+import { NotifyComponent } from './Common/Notification/notify/notify.component';
 
 const routes: Routes = [
     // {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
@@ -24,7 +25,8 @@ const routes: Routes = [
           {path:'order' , component:OrderComponent},
           {path:'home' , component:HomeComponent},
           {path:'offline' , component:OfflinepaymentComponent},
-          {path:'online' , component:OnlinePaymentComponent}
+          {path:'online' , component:OnlinePaymentComponent},
+          {path:'notify' , component:NotifyComponent},
         ]
     },
     {path:'' , component:LoginComponent },

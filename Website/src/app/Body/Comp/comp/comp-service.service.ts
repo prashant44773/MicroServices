@@ -9,9 +9,12 @@ export class CompServiceService {
 
   constructor(private api : HttpClient) { }
 
-  getApi = "https://localhost:44302/api/Comp/Get";
+  // getApi = "https://localhost:44302/api/Comp/Get"; // BaseUrls
+  // cart = "https://localhost:44317/api/Cart/CompCart";
 
-  cart = "https://localhost:44317/api/Cart/CompCart";
+  MasterApi = "https://localhost:44358/";
+  getApi = this.MasterApi + "Comp";
+  cart = this.MasterApi + "CompCart";
 
   GetCompList(){
     return this.api.get(this.getApi);
