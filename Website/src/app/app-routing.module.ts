@@ -15,8 +15,8 @@ import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/o
 import { NotifyComponent } from './Common/Notification/notify/notify.component';
 
 const routes: Routes = [
-    // {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
-    {path:'Master' , component:MasterComponent
+    {path:'Master' , component:MasterComponent , canActivate :[AuthGuard]
+    // {path:'Master' , component:MasterComponent
         , children:[
           {path:'book' , component:BookComponent},
           {path:'comp' , component:CompComponent},

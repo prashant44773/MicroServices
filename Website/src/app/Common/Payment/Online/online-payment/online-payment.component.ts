@@ -9,6 +9,7 @@ import {
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { ProductFormData } from '../../ProductFormModel';
+import { NotifyService } from '../../../Notification/notify/notify.service';
 
 @Component({
   selector: 'app-online-payment',
@@ -16,8 +17,8 @@ import { ProductFormData } from '../../ProductFormModel';
   styleUrls: ['./online-payment.component.css'],
 })
 export class OnlinePaymentComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) data) {
-    alert('Getting Product Form Data');
+  constructor(@Inject(MAT_DIALOG_DATA) data , private Notify: NotifyService) {
+    // alert('Getting Product Form Data');
     console.log(data);
     if (data.isArray) {
       this.SingleProduct = false;
@@ -99,7 +100,8 @@ export class OnlinePaymentComponent {
     console.log(this.CustomerCredentials);
 
     // Call Api Here
-    alert("Payment Was SuccessFull");
+    // alert("Payment Was SuccessFull");
+    this.Notify.SendShowUpMsg("Payment Was SuccessFull");
   }
 
   getFormValidationErrors() {

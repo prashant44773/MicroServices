@@ -121,6 +121,9 @@ export class CartbodyComponent {
       this.Notify.SendShowUpMsg("Product Has Been Removed");
       this.LoadCartDataApi();
       this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
+
+      this.TotalQuantity = 0;
+      this.TotalPrice = 0;
     });
   }
 

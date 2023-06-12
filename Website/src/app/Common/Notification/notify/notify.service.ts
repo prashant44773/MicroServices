@@ -22,7 +22,7 @@ export class NotifyService {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action,{
-      duration: 1500,
+      duration: 2000,
       verticalPosition:'top',
       horizontalPosition:'center',
       // panelClass:['center']
