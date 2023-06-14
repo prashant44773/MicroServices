@@ -18,3 +18,98 @@
   line-height:20px; /* Height / no. of lines to display */
   overflow:hidden;
 }
+
+
+.TopBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5px;
+}
+
+/* Filter CSS */
+
+.filters{
+  width: 40%;
+}
+
+.main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.min{
+  width: 20%;
+}
+.min mat-form-field{
+  width: 90%;
+}
+
+.slider{
+  width: 50%;
+}
+
+mat-slider{
+  width: 90%;
+}
+
+.max{
+  width: 20%;
+}
+.max mat-form-field{
+  width: 90%;
+}
+
+
+ /* SEarch Bar CSS */
+
+.search{
+  /* width: 50%; */
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* background: hotpink; */
+  height: 40px;
+    border: 1px solid green;
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+.searchicon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: cadetblue;
+  height: 100%;
+  width: 15%;
+}
+
+.bar{
+  width: 90%;
+  font-size:0.9rem;
+  color: grey;
+}
+
+#searchHere{
+  width: 100%;
+  height: 38px;
+  border: 1px solid cadetblue;
+  font-size: 1.1rem;
+  color: rgb(100, 85, 85);
+}
+
+#searchHere:focus{
+  border: 1px solid cadetblue;
+  background: whitesmoke;
+  outline: 1px solid cadetblue;
+}
+
+#searchHere:hover{
+  border: 2px solid cadetblue;
+}

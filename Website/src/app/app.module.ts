@@ -34,6 +34,8 @@ import { OnlinePaymentComponent } from './Common/Payment/Online/online-payment/o
 import {MatRadioModule} from '@angular/material/radio';
 import { NotifyComponent } from './Common/Notification/notify/notify.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatNativeDateModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

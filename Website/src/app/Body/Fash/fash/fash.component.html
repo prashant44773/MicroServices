@@ -1,3 +1,70 @@
+<div class="container TopBar">
+  <div class="filters">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filter By Price </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="main" [formGroup]="Slider">
+          <div class="min">
+            <mat-form-field class="example-full-width">
+              <!-- <mat-label>Favorite food</mat-label> -->
+              <input matInput placeholder="Min" type="number" min="0" [value]="min"  formControlName="min" (change)="GetSliderValue()" />
+            </mat-form-field>
+          </div>
+
+          <div class="slider">
+            <mat-slider [min]="Min" [max]="Max" >
+              <input
+                [value]="min"
+                matSliderStartThumb
+                (change)="GetSliderValue()"
+                formControlName="min"
+
+              />
+              <input
+                [value]="max"
+                matSliderEndThumb
+                (change)="GetSliderValue()"
+                formControlName="max"
+              />
+            </mat-slider>
+          </div>
+
+          <div class="max">
+            <mat-form-field class="example-full-width">
+              <!-- <mat-label>Favorite food</mat-label> -->
+              <input matInput placeholder="Max" type="number" max="1000" [value]="max" formControlName="max" (change)="GetSliderValue()"/>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="search">
+    <div class="bar" [formGroup]="Search">
+      <!-- Search Here -->
+      <input
+        type="text"
+        class="text-center"
+        id="searchHere"
+        placeholder="Search Your Product Here"
+        formControlName="Title"
+        (change)="SearchByTitle()"
+      />
+    </div>
+    <div class="searchicon">
+      <i class="bi bi-search fa-2x"></i>
+    </div>
+  </div>
+</div>
+
+
 <!-- <p>fash works!</p> -->
 
 <div class="container d-flex flex-wrap">

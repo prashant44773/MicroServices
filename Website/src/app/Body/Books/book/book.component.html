@@ -1,47 +1,101 @@
 <!-- <p>book works! old one</p> -->
+
+<div class="container TopBar">
+  <div class="filters">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Filter By Price </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="main" [formGroup]="Slider">
+          <div class="min">
+            <mat-form-field class="example-full-width">
+              <!-- <mat-label>Favorite food</mat-label> -->
+              <input matInput placeholder="Min" type="number" min="0" [value]="min"  formControlName="min" (change)="GetSliderValue()" />
+            </mat-form-field>
+          </div>
+
+          <div class="slider">
+            <mat-slider [min]="Min" [max]="Max" >
+              <input
+                [value]="min"
+                matSliderStartThumb
+                (change)="GetSliderValue()"
+                formControlName="min"
+
+              />
+              <input
+                [value]="max"
+                matSliderEndThumb
+                (change)="GetSliderValue()"
+                formControlName="max"
+              />
+            </mat-slider>
+          </div>
+
+          <div class="max">
+            <mat-form-field class="example-full-width">
+              <!-- <mat-label>Favorite food</mat-label> -->
+              <input matInput placeholder="Max" type="number" max="1000" [value]="max" formControlName="max" (change)="GetSliderValue()"/>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+
+  <div class="search">
+    <div class="bar" [formGroup]="Search">
+      <!-- Search Here -->
+      <input
+        type="text"
+        class="text-center"
+        id="searchHere"
+        placeholder="Search Your Product Here"
+        formControlName="Title"
+        (change)="SearchByTitle()"
+      />
+    </div>
+    <div class="searchicon">
+      <i class="bi bi-search fa-2x"></i>
+    </div>
+  </div>
+</div>
+
 <div class="container d-flex flex-wrap">
-
   <!-- Element -->
-  <!-- <div class="card imgStyle mt-2 mb-2 border-info">
+  <div
+    class="card imgStyle mt-2 mb-2 border-info"
+    *ngFor="let item of BookList"
+  >
     <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid" alt=""/>
+      <img
+        src="assets/Images/Books/{{ item.image }}"
+        class="img-fluid"
+        width="100%"
+      />
       <a routerLink="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        <div
+          class="mask"
+          style="background-color: rgba(251, 251, 251, 0.15)"
+        ></div>
       </a>
     </div>
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h2 class="card-title text-center">{{ item.title }}</h2>
+      <p class="card-text para">{{ item.description }}</p>
+      <h4 class="card-text text-center">{{ item.price }} &#8377;</h4>
       <div class="container d-flex justify-content-between">
-        <a routerLink="/Master/order"  class="btn btn-danger">Order Now</a>
-        <a routerLink="#!" class="btn btn-success" (click)="ReloadMsgToCart()">Add To Cart</a>
-      </div>
-    </div>
-  </div> -->
-  <!-- Element -->
-
-  <!-- <img src="assets/Images/Books/ProductImg4.png" class="img-fluid"/> -->
-  <!-- https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp -->
-
-  <!-- Element -->
-  <div class="card imgStyle mt-2 mb-2 border-info" *ngFor="let item of BookList">
-    <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
-      <img src="assets/Images/Books/{{item.image}}" class="img-fluid" width="100%"/>
-      <a routerLink="#!">
-        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-      </a>
-    </div>
-    <div class="card-body">
-      <h2 class="card-title text-center">{{item.title}}</h2>
-      <p class="card-text para">{{item.description}}</p>
-      <h4 class="card-text text-center">{{item.price}} &#8377; </h4>
-      <div class="container d-flex justify-content-between">
-        <a routerLink="/Master/order" [state]="item" class="btn btn-danger">Order Now</a>
-        <a  class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
+        <a routerLink="/Master/order" [state]="item" class="btn btn-danger"
+          >Order Now</a
+        >
+        <a class="btn btn-success" (click)="AddToCart(item)">Add To Cart</a>
       </div>
     </div>
   </div>
   <!-- Element -->
-
 </div>
-
