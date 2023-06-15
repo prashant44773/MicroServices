@@ -10,7 +10,7 @@ import { BookComponent } from './Body/Books/book/book.component';
 import { BookadminComponent } from './Admin/BooksAdmin/bookadmin/bookadmin.component';
 // import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
 // import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CompComponent } from './Body/Comp/comp/comp.component';
 import { FashComponent } from './Body/Fash/fash/fash.component';
 import { CartComponent } from './Body/Cart/cart/cart.component';
@@ -36,6 +36,8 @@ import { NotifyComponent } from './Common/Notification/notify/notify.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSliderModule} from '@angular/material/slider';
+import { ErrorInterceptorInterceptor } from './Common/ErrorHandling/error-interceptor.interceptor';
+import { MaintainanceComponent } from './Common/ErrorHandling/Pages/maintainance/maintainance.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MasterComponent,
     OfflinepaymentComponent,
     OnlinePaymentComponent,
-    NotifyComponent
+    NotifyComponent,
+    MaintainanceComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatExpansionModule,
     MatSliderModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS , useClass:ErrorInterceptorInterceptor , multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

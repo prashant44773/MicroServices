@@ -1,71 +1,76 @@
 import { Component } from '@angular/core';
 import { CompServiceService } from './comp-service.service';
 import { Cart } from 'src/app/Common/CartModel';
-import {MessageService} from '../../../Common/message/message.service';
-import {NotifyService} from '../../../Common/Notification/notify/notify.service';
+import { MessageService } from '../../../Common/message/message.service';
+import { NotifyService } from '../../../Common/Notification/notify/notify.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-comp',
   templateUrl: './comp.component.html',
-  styleUrls: ['./comp.component.css']
+  styleUrls: ['./comp.component.css'],
 })
 export class CompComponent {
+  UserID;
 
-    UserID;
+  ReqID = 200; // For Add To Cart
 
-    ReqID = 200; // For Add To Cart
+  constructor(
+    private service: CompServiceService,
+    private msgservice: MessageService,
+    private Notify: NotifyService
+  ) {
+    // Empty the values of Arrays that we use For Filters and Searching...
+    this.ApiData = [];
+    this.FilterAndSearch = [];
 
-    constructor(private service : CompServiceService , private msgservice : MessageService , private Notify : NotifyService){
-        service.GetCompList().subscribe((res)=>{
-            console.log(res);
-            this.CompList = res;
+    service.GetCompList().subscribe((res) => {
+      console.log(res);
+      this.CompList = res;
 
-            this.ApiData = res;
+      this.ApiData = res;
 
-            this.InitialValuesOfMinMax(res); // Calculate Min and Max
-        });
+      this.InitialValuesOfMinMax(res); // Calculate Min and Max
+    });
 
-        this.UserID = localStorage.getItem("User");
-    }
+    this.UserID = localStorage.getItem('User');
+  }
 
-    CompList;
+  CompList;
 
-    ApiData;
+  ApiData;
 
-    FilterAndSearch: any = [];
+  FilterAndSearch: any = [];
 
+  AddToCart(item) {
+    // alert("Adding To Cart");
+    // console.log(item);
 
-    AddToCart(item){
-      // alert("Adding To Cart");
-      // console.log(item);
+    let Body: Cart = {
+      ID: item.id,
+      Title: item.title,
+      Price: item.price,
+      Image: item.image,
+      Quantity: 1,
+      UserID: parseInt(this.UserID),
+      ReqID: this.ReqID,
+    };
 
-      let Body:Cart = {
-        ID : item.id,
-        Title:item.title,
-        Price : item.price,
-        Image : item.image,
-        Quantity : 1,
-        UserID : parseInt(this.UserID),
-        ReqID : this.ReqID
-      };
+    console.log(Body);
 
-      console.log(Body);
+    this.service.UploadToCart(Body).subscribe((res) => {
+      console.log(res);
 
-      this.service.UploadToCart(Body).subscribe((res)=>{
-          console.log(res);
+      this.Notify.SendShowUpMsg('Added To Cart');
+      this.ReloadMsgToCart(); //  Reload The Cart Count From Here using Service
+    });
+  }
 
-          this.Notify.SendShowUpMsg("Added To Cart");
-          this.ReloadMsgToCart();  //  Reload The Cart Count From Here using Service
-      });
-    }
+  ReloadMsgToCart() {
+    this.msgservice.SendReloadMsg(true);
+  }
 
-    ReloadMsgToCart(){
-      this.msgservice.SendReloadMsg(true);
-    }
-
-
-      // Fields and Functions For Slider
+  // Fields and Functions For Slider
 
   panelOpenState: boolean = false;
 
@@ -82,8 +87,8 @@ export class CompComponent {
     max: new FormControl(''),
   });
 
-  Search:FormGroup = new FormGroup({
-    Title: new FormControl('')
+  Search: FormGroup = new FormGroup({
+    Title: new FormControl(''),
   }); // For SearchBar
 
   GetSliderValue() {
@@ -115,10 +120,10 @@ export class CompComponent {
     });
   }
 
-  SearchByTitle(){
-      let str:string = this.Search.get(['Title'])?.value;
+  SearchByTitle() {
+    let str: string = this.Search.get(['Title'])?.value;
 
-      this.FilterAndSearch = []; // Empty The Array
+    this.FilterAndSearch = []; // Empty The Array
 
     this.ApiData.forEach((element) => {
       if (element.title.toLowerCase().search(str.toLowerCase()) != -1) {

@@ -20,6 +20,10 @@ export class BookComponent {
     private msgservice: MessageService,
     private Notify: NotifyService
   ) {
+    // Empty the values of Arrays that we use For Filters and Searching...
+    this.ApiData = [];
+    this.FilterAndSearch = [];
+
     service.GetBookList().subscribe((res) => {
       console.log(res);
       this.BookList = res;
@@ -83,8 +87,8 @@ export class BookComponent {
     max: new FormControl(''),
   });
 
-  Search:FormGroup = new FormGroup({
-    Title: new FormControl('')
+  Search: FormGroup = new FormGroup({
+    Title: new FormControl(''),
   }); // For SearchBar
 
   GetSliderValue() {
@@ -116,10 +120,10 @@ export class BookComponent {
     });
   }
 
-  SearchByTitle(){
-      let str:string = this.Search.get(['Title'])?.value;
+  SearchByTitle() {
+    let str: string = this.Search.get(['Title'])?.value;
 
-      this.FilterAndSearch = []; // Empty The Array
+    this.FilterAndSearch = []; // Empty The Array
 
     this.ApiData.forEach((element) => {
       if (element.title.toLowerCase().search(str.toLowerCase()) != -1) {

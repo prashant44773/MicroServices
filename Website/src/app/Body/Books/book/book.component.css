@@ -113,4 +113,11 @@ mat-slider{
   border: 2px solid cadetblue;
 }
 
+.searchicon:hover,:focus{
+  background: cornflowerblue;
+  font-size: 15px;
+  transition-delay: 2ms;
+}
+
+
 

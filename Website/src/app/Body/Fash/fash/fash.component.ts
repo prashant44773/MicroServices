@@ -20,6 +20,10 @@ export class FashComponent {
     private msgservice: MessageService,
     private Notify: NotifyService
   ) {
+    // Empty the values of Arrays that we use For Filters and Searching...
+    this.ApiData = [];
+    this.FilterAndSearch = [];
+
     service.GetFashList().subscribe((res) => {
       console.log(res);
       this.FashList = res;
@@ -37,7 +41,6 @@ export class FashComponent {
   ApiData;
 
   FilterAndSearch: any = [];
-
 
   AddToCart(item) {
     // alert("Adding To Cart");
