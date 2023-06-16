@@ -34,6 +34,7 @@ export class CartbodyComponent {
       this.CartData = res;
       console.log(res);
 
+      this.ButtonActive = true; // Deactivate if All Products Are Removed
       //Calculate Totals
       let count = 0;
       res.forEach(element => {
@@ -123,11 +124,13 @@ export class CartbodyComponent {
     this.api.RemoveFromCart(Remove).subscribe((res) => {
       console.log(res);
       this.Notify.SendShowUpMsg("Product Has Been Removed");
+
       this.LoadCartDataApi();
       this.ReloadMsgToCart(); // Reload The Cart Count From Here using Service
 
       this.TotalQuantity = 0;
       this.TotalPrice = 0;
+      this.ButtonActive = false;
     });
   }
 
