@@ -50,8 +50,6 @@ export class LoginComponent {
     let pass = this.EncryptPassword(this.LoginForm.get('pass')?.value);
 
     this.Api.Login(user,pass).subscribe((res:any)=>{
-        // localStorage.setItem('Role',res.roles);
-        // localStorage.setItem('Token',res.token);
         console.log(res);
 
         if(res.statusCode == 200){
@@ -61,9 +59,11 @@ export class LoginComponent {
               // alert("You Have Been LoggedIN");
               this.Authenticate.LoggedIn = true; // Allow user To Navigate To Home Page
               this.route.navigate(['/Master/home']);
-
               this.NotifyUser.SendShowUpMsg(`Welcome ${user} To MicroServices App`);
           });
+        }
+        else{
+          this.NotifyUser.SendShowUpMsg("Invalid Credentials");
         }
       });
 

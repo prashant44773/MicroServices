@@ -169,6 +169,8 @@ export class OfflinepaymentComponent implements OnInit {
         this.openDialog(Customer);
       } else {
         // Save This To DataBase With Cash ON Delivery Option
+        this.Notify.SendShowUpMsg("Your Order Has Been Placed");
+        this.ProductForm.reset();
       }
     } else {
       // alert('Agree With Terms And Conditions By Click On Button');
@@ -201,6 +203,7 @@ export class OfflinepaymentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      this.ProductForm.reset();
       console.log('The dialog was closed');
     });
   }
