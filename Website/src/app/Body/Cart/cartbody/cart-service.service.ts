@@ -20,6 +20,7 @@ export class CartServiceService {
   quan = this.Url + "Quantity";
   Remove = this.Url + "Remove";
   CartCount = this.Url + "UserCartCount";
+  ApiStatus = this.Url + "Active";
 
   GetCartCount(ID:number){
 
@@ -45,6 +46,11 @@ export class CartServiceService {
   RemoveFromCart(Body:MyCartQuantity)
   {
     return this.api.put(this.Remove,Body);
+  }
+
+  ActiveOrNot()
+  {
+    return this.api.get(this.ApiStatus);
   }
 
 }

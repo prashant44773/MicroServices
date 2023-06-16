@@ -24,6 +24,8 @@ export class CompComponent {
     this.ApiData = [];
     this.FilterAndSearch = [];
 
+    this.Notify.CallTheErrorPage(true);
+
     service.GetCompList().subscribe((res) => {
       console.log(res);
       this.CompList = res;

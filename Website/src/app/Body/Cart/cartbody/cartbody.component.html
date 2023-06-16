@@ -11,7 +11,7 @@
     (remove)="removeHandler($event)"
     >
     <ng-template kendoGridToolbarTemplate>
-      <button mat-raised-button mat-dialog-close color="primary" routerLink="/Master/offline" [state]="[CartData,'Offline']">Order Your Cart</button>
+      <button mat-raised-button mat-dialog-close color="primary" routerLink="/Master/offline" [state]="[CartData,'Offline']" [disabled]="ButtonActive" >Order Your Cart</button>
       <!-- <button kendoGridAddCommand>Add new</button> -->
     </ng-template>
       <!-- <kendo-grid-column field="id" title="ID"> </kendo-grid-column> -->

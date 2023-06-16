@@ -24,6 +24,8 @@ export class FashComponent {
     this.ApiData = [];
     this.FilterAndSearch = [];
 
+    this.Notify.CallTheErrorPage(true); // Activate Error Page Using This Function
+
     service.GetFashList().subscribe((res) => {
       console.log(res);
       this.FashList = res;

@@ -29,4 +29,16 @@ export class NotifyService {
     });
   }
 
+
+  // For Error Page Loading
+
+  private ShowErrorPage = new Subject<boolean>();
+
+  ActiveErrorPage:boolean = false
+
+  CallTheErrorPage(data:boolean){
+      // alert("Notification For Error Page is Called");
+      this.ActiveErrorPage = data;
+  }
+
 }

@@ -40,6 +40,8 @@ export class CartbodyComponent {
         if(count == 0){
           this.TotalQuantity = element.quantity;
           this.TotalPrice = element.price * element.quantity;
+
+          this.ButtonActive = false; // Active The Order Your Cart Button if 1 Product is Present
         }
         else{
           this.TotalQuantity = this.TotalQuantity + element.quantity;
@@ -56,6 +58,8 @@ export class CartbodyComponent {
 
   TotalQuantity; // Products
   TotalPrice;  // Price * Quantity
+
+  ButtonActive:boolean = true;
 
   group: FormGroup; // FormGroup For Editing
 

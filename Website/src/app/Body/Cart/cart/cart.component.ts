@@ -23,10 +23,20 @@ export class CartComponent implements OnInit {
   ) {
     this.UserID = localStorage.getItem('User');
 
+    this.isActive = false; // ReSet This Variable On Every Load of Componenet
+
     this.getCount();
+
+    this.CheckButtonStatus();
   }
 
   ReloadTheApi: boolean = false;
+
+  UserID;
+
+  CartCount;
+
+  isActive:boolean = true;
 
   getCount() {
     this.api.GetCartCount(parseInt(this.UserID)).subscribe((res) => {
@@ -36,9 +46,6 @@ export class CartComponent implements OnInit {
     });
   }
 
-  UserID;
-
-  CartCount;
 
   openDialog() {
     const dialogRef = this.dialog.open(CartbodyComponent, {
@@ -66,5 +73,12 @@ export class CartComponent implements OnInit {
       this.route.navigate(['/login']);
 
       this.Notify.SendShowUpMsg("You Have Been Logged Out");
+  }
+
+  CheckButtonStatus(){
+    this.api.ActiveOrNot().subscribe((res:any)=>{
+      this.isActive = res;
+      console.log(`isActive  :  `,this.isActive);
+    });
   }
 }

@@ -7,7 +7,7 @@
     <i class="bi bi-box-arrow-right fa-lg"></i>  LogOut
   </button>
 
-  <button mat-raised-button color="accent" (click)="openDialog()"
+  <button mat-raised-button color="accent" (click)="openDialog()" [disabled]="isActive == false"
     matBadge="{{CartCount}}" matBadgePosition="before" matBadgeColor="warn">
     <i class="bi bi-bag-check-fill fa-lg"></i> Your Cart
   </button>

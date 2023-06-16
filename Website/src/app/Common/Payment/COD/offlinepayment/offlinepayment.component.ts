@@ -111,7 +111,7 @@ export class OfflinepaymentComponent implements OnInit {
   // CustomerOrders;
   CustomerOrders: any = [];
 
-  ProductName = 'Test';
+  ProductName = 'No Product is Selected';
 
   TermsAndConditions: Boolean = false;
 
